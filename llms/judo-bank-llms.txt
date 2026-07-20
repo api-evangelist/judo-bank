@@ -1,0 +1,32 @@
+# Judo Bank
+
+> Judo Bank (Judo Capital Holdings Ltd) is an Australian challenger bank (ASX: JDO) purpose-built for SME lending and term deposits. As an accredited ADI and CDR data holder, it exposes a public, unauthenticated Consumer Data Right (CDR) Product Reference Data (PRD) API conforming to the DSB Consumer Data Standards Banking API. Authenticated consumer-data sharing is governed by the accredited-data-recipient (ADR) model, not an open developer program.
+
+## APIs
+
+- [Judo Bank CDR Product Reference Data API](https://www.judo.bank/open-banking/): Public unauthenticated product catalogue at https://public.open.judo.bank/cds-au/v1 - GET /banking/products and GET /banking/products/{productId}.
+
+## Specs
+
+- [OpenAPI (CDS Banking API)](openapi/judo-bank-cds-banking-products-openapi.yml)
+- [OpenAPI Overlay (AE enhancements)](overlays/judo-bank-cds-banking-products-overlay.yaml)
+
+## Artifacts
+
+- [API conventions](conventions/judo-bank-conventions.yml): CDS header versioning (x-v), x-fapi request tracing, page/page-size pagination, ErrorV2 envelope.
+- [Error catalogue](errors/judo-bank-problem-types.yml): CDS ErrorV2 URN error codes.
+- [Data model](data-model/judo-bank-data-model.yml): Product entity-relationship graph.
+- [Conformance](conformance/judo-bank-conformance.yml): CDS / FAPI / OAuth2 / OIDC posture.
+- [Lifecycle](lifecycle/judo-bank-lifecycle.yml): CDS header versioning + DSB Future Dated Obligations.
+- [MCP server (candidate)](mcp/judo-bank-mcp.yml): candidate tool surface for the two public PRD operations.
+- [Agent skill](skills/judo-bank-product-lookup.md): look up Judo Bank product reference data.
+- [Well-known probes](well-known/judo-bank-well-known.yml)
+- [Domain security](security/judo-bank-domain-security.yml)
+- [Agentic access](agentic-access/judo-bank-agentic-access.yml)
+
+## Docs
+
+- [Open Banking at Judo Bank](https://www.judo.bank/open-banking/)
+- [DSB Consumer Data Standards](https://consumerdatastandardsaustralia.github.io/standards/)
+- [CDR Banking API - Get Products reference](https://consumerdatastandardsaustralia.github.io/standards/#cdr-banking-api_banking_get-products)
+- [GitHub organization](https://github.com/judobank)

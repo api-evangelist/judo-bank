@@ -1,0 +1,10 @@
+generated: '2026-07-20'
+method: generated
+source: >-
+  Generated from openapi/judo-bank-cds-banking-products-openapi.yml public
+  operations + conventions/ + errors/. Grounded in verified operationIds.
+skills:
+- file: judo-bank-product-lookup.md
+  name: Look up Judo Bank product reference data
+  api: openapi/judo-bank-cds-banking-products-openapi.yml
+  operations: [listBankingProducts, getBankingProductDetail]

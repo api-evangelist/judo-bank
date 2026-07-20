@@ -1,0 +1,27 @@
+overlay: 1.0.0
+info:
+  title: API Evangelist enhancements for Judo Bank CDR Product Reference Data API
+  version: 1.0.0
+extends: openapi/judo-bank-cds-banking-products-openapi.yml
+actions:
+- target: $.info
+  update:
+    x-apievangelist-provider: judo-bank
+    x-apievangelist-surface: >-
+      Public unauthenticated CDR Product Reference Data (PRD). Only
+      GET /banking/products and GET /banking/products/{productId} are live
+      without accreditation; all other CDS Banking operations require the
+      accredited-data-recipient (ADR) OAuth2/OIDC + FAPI flow.
+    x-apievangelist-base-url: https://public.open.judo.bank/cds-au/v1
+    x-apievangelist-standard: DSB Consumer Data Standards (CDS) Banking API 1.36.0
+- target: $.servers
+  update:
+  - description: Judo Bank public CDR Product Reference Data
+    url: https://public.open.judo.bank/cds-au/v1
+- target: $.paths['/banking/products'].get
+  update:
+    x-apievangelist-public: true
+    x-apievangelist-verified: 'HTTP 200, x-v 3, 12 products (2026-07-20)'
+- target: $.paths['/banking/products/{productId}'].get
+  update:
+    x-apievangelist-public: true

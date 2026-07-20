@@ -1,0 +1,43 @@
+generated: '2026-07-20'
+method: searched
+source: >-
+  https://consumerdatastandardsaustralia.github.io/standards/ (CDS versioning &
+  standards-maintenance/Future Dated Obligations model) and
+  openapi/judo-bank-cds-banking-products-openapi.yml. Judo Bank's PRD API
+  version lifecycle is governed centrally by the Data Standards Body, not by a
+  self-serve Judo developer program; Judo does not publish its own API status
+  page or independent deprecation policy.
+description: >-
+  Version and deprecation lifecycle for Judo Bank's CDR Product Reference Data
+  API. Endpoint versions are negotiated per-request via CDS header versioning;
+  the endpoint version schedule, retirement (Sunset) and Future Dated Obligation
+  (FDO) dates are set by the DSB Consumer Data Standards, which every data holder
+  including Judo Bank must adopt on the mandated obligation date.
+versioning:
+  scheme: cds-header-versioning
+  mechanism: x-v (requested) / x-min-v (minimum) request headers; x-v response header
+  current_versions:
+    get-products: '3'
+    get-product-detail: '4'
+  governed_by: DSB Consumer Data Standards (endpoint versions defined centrally)
+  docs: https://consumerdatastandardsaustralia.github.io/standards/#versioning
+deprecation:
+  mechanism: >-
+    Endpoint-version deprecation and retirement follow the DSB standards-maintenance
+    and Future Dated Obligations (FDO) process - a version is superseded on a
+    published obligation date after which the prior version may be retired. This
+    is a whole-of-ecosystem obligation, not a Judo-specific deprecation policy.
+  provider_policy_published: false
+  docs: https://consumerdatastandardsaustralia.github.io/standards/maintenance.html
+status_page:
+  provider_status_page: null
+  note: >-
+    Judo Bank does not publish a dedicated API status page. Data-holder
+    availability and performance are reported through the CDR Register and the
+    ACCC/Treasury CDR performance dashboards, not a Judo statuspage.io surface.
+sla:
+  note: >-
+    Availability and traffic-threshold obligations are defined by the CDS
+    Non-Functional Requirements (NFRs) for CDR data holders.
+  docs: https://consumerdatastandardsaustralia.github.io/standards/#non-functional-requirements
+deprecated_operations: []

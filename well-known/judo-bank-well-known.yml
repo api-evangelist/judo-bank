@@ -1,0 +1,32 @@
+generated: '2026-07-20'
+method: searched
+source: live probes of the Judo Bank website + CDR product-data host
+description: >-
+  Well-known discovery probes for Judo Bank. The public CDR Product Reference
+  Data host (public.open.judo.bank) and the corporate site (www.judo.bank) were
+  probed for the standard /.well-known/ discovery surface. No documents were
+  found - the PRD host is an unauthenticated product-data endpoint (no OIDC/OAuth
+  discovery), and neither host publishes a security.txt. Absence recorded as
+  valid data.
+hosts:
+- host: https://public.open.judo.bank
+  documents:
+  - path: /.well-known/security.txt
+    status: 404
+  - path: /.well-known/openid-configuration
+    status: 404
+  - path: /.well-known/oauth-authorization-server
+    status: 404
+  - path: /.well-known/api-catalog
+    status: 404
+  - path: /.well-known/ai-plugin.json
+    status: 404
+- host: https://www.judo.bank
+  documents:
+  - path: /.well-known/security.txt
+    status: 404
+notes: >-
+  CDR authenticated data sharing does not surface OIDC discovery on the data
+  holder's public product host; the accredited-data-recipient (ADR) trust model
+  and the data holder's authorisation endpoints are brokered through the CDR
+  Register, not a self-serve /.well-known/openid-configuration.

@@ -1,0 +1,98 @@
+generated: '2026-07-20'
+method: derived
+source: >-
+  Derived from openapi/judo-bank-cds-banking-products-openapi.yml (4xx responses,
+  ResponseErrorListV2 / ErrorV2 schema) and enriched from the DSB Consumer Data
+  Standards error-code registry
+  (https://consumerdatastandardsaustralia.github.io/standards/#error-codes).
+format: cds-errorv2
+description: >-
+  Judo Bank's CDR Banking API returns errors in the CDS ErrorV2 list envelope
+  ({ "errors": [ { "code", "title", "detail", "meta"? } ] }). The "code" is a
+  standardised CDR error-code URN. This catalogue covers the error responses the
+  spec declares; the public Product Reference Data endpoints (GET /banking/products,
+  GET /banking/products/{productId}) surface only the non-authorisation errors
+  (400 / 404 / 406 / 422). The Authorisation/* codes apply to the authenticated
+  ADR account-data endpoints.
+envelope:
+  field: errors
+  item_fields: [code, title, detail, meta]
+  content_type: application/json
+problems:
+- code: urn:au-cds:error:cds-all:Field/Invalid
+  status: 400
+  title: Invalid Field
+  detail: A field in the request has an invalid value.
+  applies_to_public_prd: true
+- code: urn:au-cds:error:cds-all:Field/InvalidDateTime
+  status: 400
+  title: Invalid DateTime
+  detail: A date/time field in the request is not a valid RFC 3339 value.
+  applies_to_public_prd: true
+- code: urn:au-cds:error:cds-all:Field/InvalidPageSize
+  status: 400
+  title: Invalid Page Size
+  detail: The page-size query parameter is out of the permitted range.
+  applies_to_public_prd: true
+- code: urn:au-cds:error:cds-all:Field/Missing
+  status: 400
+  title: Missing Required Field
+  detail: A required field is missing from the request.
+  applies_to_public_prd: true
+- code: urn:au-cds:error:cds-all:Header/InvalidVersion
+  status: 400
+  title: Invalid Version
+  detail: The x-v (or x-min-v) request header is not a positive integer.
+  applies_to_public_prd: true
+- code: urn:au-cds:error:cds-all:Header/Missing
+  status: 400
+  title: Missing Required Header
+  detail: A required request header is missing.
+  applies_to_public_prd: true
+- code: urn:au-cds:error:cds-all:Header/UnsupportedVersion
+  status: 406
+  title: Unsupported Version
+  detail: >-
+    The requested endpoint version (x-v / x-min-v) is not supported by the data
+    holder.
+  applies_to_public_prd: true
+- code: urn:au-cds:error:cds-all:Field/InvalidPage
+  status: 422
+  title: Invalid Page
+  detail: The requested page is out of range for the result set.
+  applies_to_public_prd: true
+- code: urn:au-cds:error:cds-all:Resource/Invalid
+  status: 404
+  title: Invalid Resource
+  detail: The requested resource identifier is invalid (e.g. an unknown productId).
+  applies_to_public_prd: true
+- code: urn:au-cds:error:cds-all:Resource/Unavailable
+  status: 404
+  title: Unavailable Resource
+  detail: The requested resource is not currently available.
+  applies_to_public_prd: true
+- code: urn:au-cds:error:cds-all:Resource/NotImplemented
+  status: 404
+  title: Resource Not Implemented
+  detail: The requested resource/endpoint is not implemented by this data holder.
+  applies_to_public_prd: true
+- code: urn:au-cds:error:cds-banking:Authorisation/InvalidBankingAccount
+  status: 404
+  title: Invalid Banking Account
+  detail: The specified account is invalid for the authorised consumer.
+  applies_to_public_prd: false
+- code: urn:au-cds:error:cds-banking:Authorisation/UnavailableBankingAccount
+  status: 404
+  title: Unavailable Banking Account
+  detail: The specified account is unavailable for the authorised consumer.
+  applies_to_public_prd: false
+- code: urn:au-cds:error:cds-banking:Authorisation/InvalidBankingAccount
+  status: 422
+  title: Invalid Banking Account (unprocessable)
+  detail: The specified account cannot be processed for the authorised consumer.
+  applies_to_public_prd: false
+- code: urn:au-cds:error:cds-banking:Authorisation/UnavailableBankingAccount
+  status: 422
+  title: Unavailable Banking Account (unprocessable)
+  detail: The specified account is unavailable and cannot be processed.
+  applies_to_public_prd: false

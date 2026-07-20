@@ -1,0 +1,96 @@
+generated: '2026-07-20'
+method: searched
+source: >-
+  https://consumerdatastandardsaustralia.github.io/standards/ (DSB Consumer Data
+  Standards - Banking API, "HTTP Headers" and "Pagination" sections) cross-checked
+  against openapi/judo-bank-cds-banking-products-openapi.yml. These are the
+  cross-cutting request/response conventions mandated by the CDS for every CDR
+  Banking endpoint, including Judo Bank's public Product Reference Data surface.
+description: >-
+  How Judo Bank's CDR Product Reference Data API behaves across operations:
+  it is a standards-conformant implementation of the DSB Consumer Data Standards
+  Banking API, so its conventions are the CDS conventions - header-based version
+  negotiation, x-fapi request tracing, page/page-size pagination, and the CDS
+  ErrorV2 envelope. The public product endpoints are unauthenticated and
+  read-only.
+
+base_url: https://public.open.judo.bank/cds-au/v1
+api_style: REST over HTTPS, JSON responses, DSB Consumer Data Standards (CDS) Banking API
+
+authentication:
+  scheme: >-
+    None for the public Product Reference Data (PRD) surface - GET
+    /banking/products and GET /banking/products/{productId} are unauthenticated.
+    All other CDR Banking resources (accounts, balances, transactions, payments)
+    require the accredited-data-recipient (ADR) OAuth2/OIDC + FAPI consumer-data
+    flow brokered by the CDR Register, not an open developer key.
+  docs: https://consumerdatastandardsaustralia.github.io/standards/#security-profile
+
+versioning:
+  scheme: header-based version negotiation (per-endpoint version)
+  request_headers:
+    x-v: The version of the endpoint requested by the client (mandatory on data requests).
+    x-min-v: >-
+      Minimum acceptable version - the endpoint responds with the highest
+      supported version between x-min-v and x-v.
+  response_header:
+    x-v: The version of the endpoint actually served.
+  current:
+    get-products: '3'      # confirmed live: x-v 3
+    get-product-detail: '4'
+  docs: https://consumerdatastandardsaustralia.github.io/standards/#versioning
+
+request_tracing:
+  supported: true
+  request_header: x-fapi-interaction-id
+  behavior: >-
+    A client-supplied RFC 4122 UUID echoed back in the x-fapi-interaction-id
+    response header; if absent the server generates one. This is the FAPI
+    interaction identifier used for end-to-end request correlation and support.
+  related_headers: [x-fapi-auth-date, x-fapi-customer-ip-address]
+  docs: https://consumerdatastandardsaustralia.github.io/standards/#http-headers
+
+pagination:
+  style: page-number
+  request_params:
+    page: Page of results to request (1-based, default 1).
+    page-size: Number of records per page (default 25, max 1000 per CDS).
+  response_fields:
+    data: array of results
+    meta.totalRecords: total number of records
+    meta.totalPages: total number of pages
+    links.self: link to the current page
+    links.first: link to the first page
+    links.prev: link to the previous page (when applicable)
+    links.next: link to the next page (when applicable)
+    links.last: link to the last page
+  docs: https://consumerdatastandardsaustralia.github.io/standards/#pagination
+
+idempotency:
+  supported: false
+  detail: >-
+    The public PRD surface exposes only safe, read-only GET operations, which are
+    inherently idempotent; the CDS defines no idempotency-key header for these
+    endpoints. No Idempotency-Key contract is advertised.
+
+error_envelope:
+  shape: >-
+    CDS ErrorV2 list - { "errors": [ { "code", "title", "detail", "meta"? } ] }.
+    Error "code" values are CDS error-code URNs (e.g.
+    urn:au-cds:error:cds-all:Field/InvalidPageSize). Not RFC 9457
+    application/problem+json.
+  detail: errors/judo-bank-problem-types.yml
+  docs: https://consumerdatastandardsaustralia.github.io/standards/#error-codes
+
+rate_limiting:
+  detail: >-
+    The CDS defines a traffic-thresholds / non-functional-requirements regime for
+    CDR data holders (transaction-per-second tiers by endpoint class). No
+    provider-specific rate-limit headers are documented for Judo Bank's public
+    PRD endpoints.
+  docs: https://consumerdatastandardsaustralia.github.io/standards/#non-functional-requirements
+
+cross_links:
+  errors: errors/judo-bank-problem-types.yml
+  lifecycle: lifecycle/judo-bank-lifecycle.yml
+  conformance: conformance/judo-bank-conformance.yml

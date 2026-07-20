@@ -56,10 +56,36 @@ apis:
     /banking/products/{productId} returns full product detail. No authentication or
     API key is required for this product-reference surface.
 common:
+- type: AgenticAccess
+  url: agentic-access/judo-bank-agentic-access.yml
+- type: DomainSecurity
+  url: security/judo-bank-domain-security.yml
+- type: Conventions
+  url: conventions/judo-bank-conventions.yml
+- type: ErrorCatalog
+  url: errors/judo-bank-problem-types.yml
+- type: Conformance
+  url: conformance/judo-bank-conformance.yml
+- type: Lifecycle
+  url: lifecycle/judo-bank-lifecycle.yml
+- type: DataModel
+  url: data-model/judo-bank-data-model.yml
+- type: MCPServer
+  url: mcp/judo-bank-mcp.yml
+- type: Overlay
+  url: overlays/judo-bank-cds-banking-products-overlay.yaml
+- type: AgentSkill
+  url: skills/judo-bank-product-lookup.md
+- type: WellKnown
+  url: well-known/judo-bank-well-known.yml
+- type: LLMsTxt
+  url: llms/judo-bank-llms.txt
 - type: Website
   url: https://www.judo.bank/
 - type: Documentation
   url: https://www.judo.bank/open-banking/
+- type: PrivacyPolicy
+  url: https://www.judo.bank/privacy-policy/
 - type: GitHubOrganization
   url: https://github.com/judobank
 - type: LinkedIn

@@ -1,0 +1,91 @@
+generated: '2026-07-20'
+method: derived
+source: >-
+  Derived from openapi/judo-bank-cds-banking-products-openapi.yml
+  (components.schemas: BankingProductV6, BankingProductDetailV7 and their nested
+  feature/constraint/eligibility/fee/rate schemas). Product identity and category
+  domains from the DSB CDS Banking API object model.
+description: >-
+  Entity-relationship graph for Judo Bank's public CDR Product Reference Data
+  surface. The Product is the root aggregate; product detail composes bundles,
+  features, constraints, eligibility, fees, deposit/lending rates, and instalment
+  plans. Ids are CDS ASCIIString product identifiers (not human-readable
+  prefixed ids).
+entities:
+- name: BankingProduct
+  schema: BankingProductV6
+  id_field: productId
+  id_note: CDS-defined product identifier, unique within the data holder
+  key_fields: [productId, productCategory, name, description, brand, isTailored, lastUpdated]
+  category_domain: [BUSINESS_LOANS, BUY_NOW_PAY_LATER, CRED_AND_CHRG_CARDS, LEASES,
+    MARGIN_LOANS, OVERDRAFTS, PERS_LOANS, REGULATED_TRUST_ACCOUNTS, RESIDENTIAL_MORTGAGES,
+    TERM_DEPOSITS, TRADE_FINANCE, TRANS_AND_SAVINGS_ACCOUNTS, TRAVEL_CARDS, BUSINESS_TRANS_AND_SAVINGS_ACCOUNTS]
+- name: BankingProductDetail
+  schema: BankingProductDetailV7
+  id_field: productId
+  extends: BankingProduct
+- name: BankingProductBundle
+  schema: BankingProductBundle
+- name: BankingProductFeature
+  schema: BankingProductFeatureV4
+- name: BankingProductConstraint
+  schema: BankingProductConstraintV3
+- name: BankingProductEligibility
+  schema: BankingProductEligibilityV2
+- name: BankingProductFee
+  schema: BankingProductFeeV2
+- name: BankingProductDiscount
+  schema: BankingProductDiscountV2
+- name: BankingProductDepositRate
+  schema: BankingProductDepositRateV2
+- name: BankingProductLendingRate
+  schema: BankingProductLendingRateV3
+- name: BankingProductRateTier
+  schema: BankingProductRateTierV4
+- name: BankingProductInstalments
+  schema: BankingProductInstalments
+relationships:
+- from: BankingProductDetail
+  to: BankingProductBundle
+  type: has_many
+  via: bundles
+- from: BankingProductDetail
+  to: BankingProductFeature
+  type: has_many
+  via: features
+- from: BankingProductDetail
+  to: BankingProductConstraint
+  type: has_many
+  via: constraints
+- from: BankingProductDetail
+  to: BankingProductEligibility
+  type: has_many
+  via: eligibility
+- from: BankingProductDetail
+  to: BankingProductFee
+  type: has_many
+  via: fees
+- from: BankingProductDetail
+  to: BankingProductDepositRate
+  type: has_many
+  via: depositRates
+- from: BankingProductDetail
+  to: BankingProductLendingRate
+  type: has_many
+  via: lendingRates
+- from: BankingProductFee
+  to: BankingProductDiscount
+  type: has_many
+  via: discounts
+- from: BankingProductDepositRate
+  to: BankingProductRateTier
+  type: has_many
+  via: tiers
+- from: BankingProductLendingRate
+  to: BankingProductRateTier
+  type: has_many
+  via: tiers
+- from: BankingProductLendingRate
+  to: BankingProductInstalments
+  type: has_one
+  via: instalments

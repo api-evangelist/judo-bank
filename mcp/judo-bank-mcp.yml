@@ -1,0 +1,31 @@
+generated: '2026-07-20'
+method: derived
+status: candidate
+source: >-
+  Derived from the public, unauthenticated operations in
+  openapi/judo-bank-cds-banking-products-openapi.yml. Judo Bank publishes no
+  official hosted/remote MCP server; this is a candidate tool surface covering
+  only the endpoints an agent can actually call without CDR accreditation (the
+  Product Reference Data endpoints). The authenticated CDR account/transaction
+  operations are excluded because they require the accredited-data-recipient flow.
+server:
+  name: judo-bank
+  transport: http
+  url: null
+tools:
+- name: list_banking_products
+  description: >-
+    List Judo Bank's publicly available banking products (paginated), filterable
+    by product category, effective date and update time.
+  source_operation: openapi/judo-bank-cds-banking-products-openapi.yml#listBankingProducts
+  auth: none
+- name: get_banking_product_detail
+  description: >-
+    Get the full detail of a single Judo Bank product by productId, including
+    features, constraints, eligibility, fees and deposit/lending rates.
+  source_operation: openapi/judo-bank-cds-banking-products-openapi.yml#getBankingProductDetail
+  auth: none
+notes: >-
+  Both tools require the CDS version header x-v (products list x-v 3, product
+  detail x-v 4) and echo an x-fapi-interaction-id. No API key or OAuth token is
+  required for these product-reference operations.
