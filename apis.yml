@@ -1,0 +1,69 @@
+aid: judo-bank
+url: https://raw.githubusercontent.com/api-evangelist/judo-bank/refs/heads/main/apis.yml
+name: Judo Bank
+kind: company
+description: Judo Bank (Judo Capital Holdings Ltd) is an Australian challenger bank
+  founded in 2016 and headquartered in Melbourne, purpose-built to serve small and
+  medium-sized enterprises (SMEs) with relationship-led business lending alongside
+  personal and business term deposits. It was the first new domestically-owned bank
+  in decades to be granted a full, unrestricted authorised deposit-taking institution
+  (ADI) licence by APRA, in April 2019, and has been publicly listed on the Australian
+  Securities Exchange (ticker ASX JDO) since November 2021 - it is a for-profit, shareholder-owned
+  bank, not a customer-owned mutual. As a designated ADI and data holder under Australia's
+  Consumer Data Right (CDR / Open Banking) regime, Judo Bank exposes a public,
+  unauthenticated Product Reference Data (PRD) API conforming to the Data Standards
+  Body (DSB) Consumer Data Standards, while authenticated consumer-data sharing is
+  governed by the accredited data recipient (ADR) model rather than an open self-serve
+  developer program.
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+tags:
+- Financial
+- Banks
+- Open Banking
+- CDR
+- Consumer Banking
+- Australia
+- SME Lending
+- Product Reference Data
+created: '2026-07-20'
+modified: '2026-07-20'
+specificationVersion: '0.19'
+apis:
+- aid: judo-bank:judo-bank-cdr-product-reference-data-api
+  name: Judo Bank CDR Product Reference Data API
+  tags:
+  - CDR
+  - Open Banking
+  - Product Reference Data
+  - Banking Products
+  - Australia
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://www.judo.bank/open-banking/
+  baseURL: https://public.open.judo.bank/cds-au/v1
+  properties:
+  - url: https://consumerdatastandardsaustralia.github.io/standards/
+    type: Documentation
+  - url: https://consumerdatastandardsaustralia.github.io/standards/#cdr-banking-api_banking_get-products
+    type: APIReference
+  - url: openapi/judo-bank-cds-banking-products-openapi.yml
+    type: OpenAPI
+  description: Public, unauthenticated Consumer Data Right (CDR) Product Reference
+    Data API for Judo Bank, served at https://public.open.judo.bank/cds-au/v1 and
+    conforming to the DSB Consumer Data Standards (CDS) Banking API. The GET
+    /banking/products endpoint (confirmed live, HTTP 200, x-v 3, 12 products across
+    categories including residential mortgages and term deposits) returns the bank's
+    publicly available product catalogue with paginated metadata; GET
+    /banking/products/{productId} returns full product detail. No authentication or
+    API key is required for this product-reference surface.
+common:
+- type: Website
+  url: https://www.judo.bank/
+- type: Documentation
+  url: https://www.judo.bank/open-banking/
+- type: GitHubOrganization
+  url: https://github.com/judobank
+- type: LinkedIn
+  url: https://www.linkedin.com/company/judobank
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com

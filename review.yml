@@ -1,0 +1,100 @@
+aid: judo-bank
+name: Judo Bank
+review:
+  question: Does Judo Bank expose a live, confirmable public API surface, and if so what is its posture?
+  answer: true
+  date: '2026-07-20'
+  reviewer: API Evangelist
+  cdrPrdConfirmed: true
+  developerPortal: false
+findings:
+  summary: |
+    Judo Bank's only confirmed public, unauthenticated API surface is the
+    Consumer Data Right (CDR) Product Reference Data (PRD) API mandated for
+    every active Australian ADI. Its CDR public base URI was resolved from
+    the ACCC CDR Register data-holder brand summary as
+    https://public.open.judo.bank, and the products endpoint was confirmed
+    live: GET https://public.open.judo.bank/cds-au/v1/banking/products
+    returned HTTP 200 with an x-v: 3 response header, application/json body,
+    and a data.products array (12 products, meta.totalRecords 12, across
+    categories including RESIDENTIAL_MORTGAGES and term deposits). No API
+    key or authentication is required for this surface.
+
+    Judo Bank does NOT run a broad open developer portal. There is no
+    reachable developer.judo.bank host, and no Up-/NAB-/CommBank-style
+    self-serve personal-banking developer program. Beyond public PRD, all
+    consumer-data access is authenticated and gated through the CDR
+    accredited-data-recipient (ADR) model, not an open API program. A
+    GitHub organisation exists at https://github.com/judobank (0 public
+    repositories) and a company LinkedIn page at
+    https://www.linkedin.com/company/judobank. The main website
+    (https://www.judo.bank/) and its open-banking page
+    (https://www.judo.bank/open-banking/) return HTTP 403 to automated
+    clients due to bot protection but are genuine, search-indexed pages.
+
+    Judo Capital Holdings Ltd is a for-profit, ASX-listed bank (ASX: JDO),
+    not a customer-owned mutual, focused on SME business lending and term
+    deposits.
+  authModel:
+    prdApi: none (public, unauthenticated Product Reference Data)
+    consumerData: |
+      CDR / Open Banking authenticated data-sharing follows the DSB
+      Consumer Data Standards security profile - OAuth2 / OpenID Connect
+      with FAPI (Financial-grade API) hardening, PKCE, and the CDR
+      accredited-data-recipient (ADR) consent model. This is not a
+      self-serve API-key or developer-registration flow; access to
+      authenticated banking data requires CDR accreditation.
+  specProvenance: |
+    The harvested OpenAPI at
+    openapi/judo-bank-cds-banking-products-openapi.yml is the SHARED DSB
+    Consumer Data Standards "CDR Banking API" contract (title "CDR Banking
+    API", version 1.36.0, OpenAPI 3.0.3, 16 paths including
+    /banking/products and /banking/products/{productId}), downloaded
+    verbatim from the official Consumer Data Standards Australia
+    documentation site. It is the industry-wide CDS banking standard that
+    Judo Bank's PRD endpoint conforms to - it is NOT a Judo-proprietary
+    contract. Judo Bank does not publish its own bank-specific OpenAPI
+    document.
+  transports:
+    - protocol: REST
+      scheme: https
+      baseURL: https://public.open.judo.bank/cds-au/v1
+      documented: true
+      note: CDR Product Reference Data API; GET /banking/products confirmed HTTP 200, x-v 3.
+    - protocol: WebSocket
+      scheme: wss
+      documented: false
+      note: No WebSocket or streaming surface is documented for the CDR banking APIs.
+  endpointsConfirmed:
+    - GET https://public.open.judo.bank/cds-au/v1/banking/products
+  endpointsStandardCds:
+    - GET /cds-au/v1/banking/products
+    - GET /cds-au/v1/banking/products/{productId}
+sources:
+  - url: https://api.cdr.gov.au/cdr-register/v1/banking/data-holders/brands/summary
+    type: CDRRegister
+    note: ACCC CDR Register brand summary; resolved Judo Bank publicBaseUri = https://public.open.judo.bank.
+  - url: https://public.open.judo.bank/cds-au/v1/banking/products
+    type: APIEndpoint
+    note: Confirmed live - HTTP 200, x-v 3, application/json, data.products array of 12 products.
+  - url: https://consumerdatastandardsaustralia.github.io/standards/includes/swagger/cds_banking.json
+    type: OpenAPI
+    note: Source of the harvested DSB CDS Banking API OpenAPI (CDR Banking API v1.36.0, OpenAPI 3.0.3), shared standard not bank-proprietary.
+  - url: https://www.judo.bank/open-banking/
+    type: Documentation
+    note: Judo Bank open-banking / CDR page (HTTP 403 to bots via WAF, search-indexed and genuine).
+  - url: https://github.com/judobank
+    type: GitHubOrganization
+    note: Judo Bank GitHub organisation exists (HTTP 200); 0 public repositories.
+  - url: https://www.linkedin.com/company/judobank
+    type: LinkedIn
+    note: Company LinkedIn page confirmed (HTTP 200).
+actions:
+  openapiPath: openapi/judo-bank-cds-banking-products-openapi.yml
+  apisYmlCreated: true
+  reason: |
+    Bootstrap of Judo Bank provider profile. Confirmed the CDR PRD public
+    endpoint live from the ACCC register, listed it as the bank's real
+    public API, and harvested the shared DSB CDS Banking OpenAPI verbatim
+    with provenance recorded. No proprietary spec or open developer portal
+    exists to capture.
