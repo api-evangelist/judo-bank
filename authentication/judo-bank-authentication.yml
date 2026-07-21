@@ -1,0 +1,67 @@
+generated: '2026-07-21'
+method: derived
+source: >-
+  Derived from conventions/judo-bank-conventions.yml,
+  conformance/judo-bank-conformance.yml and the DSB Consumer Data Standards
+  security profile (https://consumerdatastandardsaustralia.github.io/standards/#security-profile).
+  The public Product Reference Data OpenAPI declares no securitySchemes because
+  the PRD surface is unauthenticated; the authenticated CDR data-sharing surface
+  is governed by the accredited-data-recipient (ADR) model, not a self-serve
+  developer key, so its scheme is not expressed in Judo's public spec.
+description: >-
+  Two-tier authentication model for Judo Bank's CDR Banking APIs. The public
+  Product Reference Data (PRD) surface (GET /banking/products,
+  /banking/products/{productId}) is entirely unauthenticated - no API key,
+  token, or client credential is required. Every other CDR Banking resource
+  (accounts, balances, transactions, direct debits, scheduled payments, payees)
+  is consumer-authorized and only reachable through the CDR
+  accredited-data-recipient (ADR) OAuth 2.0 / OpenID Connect + FAPI flow brokered
+  by the CDR Register - there is no open self-serve developer key.
+summary:
+  types: [none, oauth2, openIdConnect, mutualTLS]
+  public_prd_auth: none
+  authenticated_surface_auth: oauth2 (authorization_code + PKCE) over OIDC, FAPI-secured, mTLS-bound
+  api_key_in: []
+  oauth2_flows: [authorizationCode]
+schemes:
+  - name: PublicProductReferenceData
+    type: none
+    applies_to:
+      - GET /banking/products
+      - GET /banking/products/{productId}
+    note: >-
+      Unauthenticated public product catalogue confirmed live (HTTP 200, x-v 3)
+      at https://public.open.judo.bank/cds-au/v1. No credential required.
+  - name: CDR-ADR-OAuth2
+    type: oauth2
+    scheme: authorizationCode
+    pkce: true
+    applies_to:
+      - GET /banking/accounts and account detail/balances
+      - GET /banking/accounts/{accountId}/transactions
+      - GET /banking/accounts/{accountId}/direct-debits and scheduled payments
+      - GET /banking/payees
+    flow: >-
+      Consumer authorizes an accredited data recipient; the data holder
+      (Judo Bank) authorisation server, discovered via the CDR Register, issues
+      an authorization_code + PKCE grant. Access tokens are consumer-scoped and
+      short-lived per the CDS security profile.
+    fapi: true
+    mtls: true
+    docs: https://consumerdatastandardsaustralia.github.io/standards/#security-profile
+  - name: CDR-OIDC
+    type: openIdConnect
+    note: >-
+      The CDS security profile is built on OpenID Connect; identity is asserted
+      via OIDC id_tokens in the CDR authorisation flow. OIDC discovery is not
+      exposed on the public PRD host - authorisation-server metadata is brokered
+      through the CDR Register, not a self-serve /.well-known/openid-configuration.
+    docs: https://consumerdatastandardsaustralia.github.io/standards/#security-profile
+  - name: CDR-mTLS
+    type: mutualTLS
+    note: >-
+      Holder-of-key / sender-constrained access tokens over mutual TLS between
+      the accredited data recipient and the data holder, per the FAPI 1.0
+      Advanced profile the CDS mandates. The OpenAPI server block itself is
+      labelled "MTLS" (https://mtls.dh.example.com/cds-au/v1).
+docs: https://www.judo.bank/open-banking/
