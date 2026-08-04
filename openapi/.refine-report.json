@@ -1,0 +1,26 @@
+{
+  "provider": "judo-bank",
+  "sources": [
+    "judo-bank-banking-account-balances-api-openapi.yml",
+    "judo-bank-banking-account-direct-debits-api-openapi.yml",
+    "judo-bank-banking-account-scheduled-payments-api-openapi.yml",
+    "judo-bank-banking-account-transactions-api-openapi.yml",
+    "judo-bank-banking-accounts-api-openapi.yml",
+    "judo-bank-banking-payees-api-openapi.yml",
+    "judo-bank-banking-products-api-openapi.yml"
+  ],
+  "outputs": [
+    "judo-bank-banking-account-balances-api-openapi.yml",
+    "judo-bank-banking-account-direct-debits-api-openapi.yml",
+    "judo-bank-banking-account-scheduled-payments-api-openapi.yml",
+    "judo-bank-banking-account-transactions-api-openapi.yml",
+    "judo-bank-banking-accounts-api-openapi.yml",
+    "judo-bank-banking-payees-api-openapi.yml",
+    "judo-bank-banking-products-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}
