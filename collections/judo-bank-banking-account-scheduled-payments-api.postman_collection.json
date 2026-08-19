@@ -1,0 +1,2680 @@
+{
+  "item": [
+    {
+      "id": "de9261e3-0d03-4870-b651-5826ab045299",
+      "name": "Banking Account Scheduled Payments",
+      "description": {
+        "content": "Banking Account Scheduled Payment endpoints",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "7e6d4c92-8957-4b16-880a-48033e5065b8",
+          "name": "Get Scheduled Payments for Account",
+          "request": {
+            "name": "Get Scheduled Payments for Account",
+            "description": {
+              "content": "Obtain scheduled, outgoing payments for a specific account.\n\nObsolete versions: [v1](includes/obsolete/get-scheduled-payments-for-account-v1.html).",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "banking",
+                "accounts",
+                ":accountId",
+                "payments",
+                "scheduled"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "1",
+                  "description": "Page of results to request (standard pagination)."
+                },
+                {
+                  "disabled": false,
+                  "key": "page-size",
+                  "value": "25",
+                  "description": "Page size to request. Default is 25 (standard pagination)."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "accountId",
+                  "description": "(Required) The _accountId_ to obtain data for. _accountId_ values are returned by account list endpoints."
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) Version of the API endpoint requested by the client. Must be set to a positive integer. The endpoint should respond with the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers). If the value of [_x-min-v_](#request-headers) is equal to or higher than the value of [_x-v_](#request-headers) then the [_x-min-v_](#request-headers) header should be treated as absent. If all versions requested are not supported then the endpoint **MUST** respond with a `406 Not Acceptable`. See [HTTP Headers](#request-headers).",
+                "key": "x-v",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The endpoint should respond with the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers). If all versions requested are not supported then the endpoint **MUST** respond with a `406 Not Acceptable`.",
+                "key": "x-min-v",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder **MUST** play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
+                "key": "x-fapi-interaction-id",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "The time when the customer last logged in to the Data Recipient Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**. Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.",
+                "key": "x-fapi-auth-date",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "The customer's original IP address if the customer is currently logged in to the Data Recipient Software Product. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.",
+                "key": "x-fapi-customer-ip-address",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User-Agent header, if the customer is currently logged in to the Data Recipient Software Product. Mandatory for customer present calls. Not required for unattended or unauthenticated calls.",
+                "key": "x-cds-client-headers",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "7d5d373e-6bd9-4d0e-bc07-cafac19676a6",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "banking",
+                    "accounts",
+                    ":accountId",
+                    "payments",
+                    "scheduled"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "page-size",
+                      "value": "25"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "accountId",
+                      "description": "(Required) The _accountId_ to obtain data for. _accountId_ values are returned by account list endpoints."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Version of the API endpoint requested by the client. Must be set to a positive integer. The endpoint should respond with the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers). If the value of [_x-min-v_](#request-headers) is equal to or higher than the value of [_x-v_](#request-headers) then the [_x-min-v_](#request-headers) header should be treated as absent. If all versions requested are not supported then the endpoint **MUST** respond with a `406 Not Acceptable`. See [HTTP Headers](#request-headers).",
+                    "key": "x-v",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The endpoint should respond with the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers). If all versions requested are not supported then the endpoint **MUST** respond with a `406 Not Acceptable`.",
+                    "key": "x-min-v",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder **MUST** play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
+                    "key": "x-fapi-interaction-id",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The time when the customer last logged in to the Data Recipient Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**. Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.",
+                    "key": "x-fapi-auth-date",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The customer's original IP address if the customer is currently logged in to the Data Recipient Software Product. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.",
+                    "key": "x-fapi-customer-ip-address",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User-Agent header, if the customer is currently logged in to the Data Recipient Software Product. Mandatory for customer present calls. Not required for unattended or unauthenticated calls.",
+                    "key": "x-cds-client-headers",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "disabled": false,
+                  "description": "(Required) The [payload version](#response-headers) that the endpoint has responded with.",
+                  "key": "x-v",
+                  "value": "string"
+                },
+                {
+                  "disabled": false,
+                  "description": "(Required) An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder **MUST** play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
+                  "key": "x-fapi-interaction-id",
+                  "value": "string"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": {\n    \"scheduledPayments\": [\n      {\n        \"from\": {\n          \"accountId\": {\n            \"description\": \"Unique identifier for the account.\",\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        },\n        \"payerReference\": \"string\",\n        \"paymentSet\": [\n          {\n            \"to\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"isAmountCalculated\": false,\n            \"amount\": \"string\",\n            \"currency\": \"AUD\"\n          },\n          {\n            \"to\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"isAmountCalculated\": false,\n            \"amount\": \"string\",\n            \"currency\": \"AUD\"\n          }\n        ],\n        \"recurrence\": {\n          \"recurrenceUType\": \"eventBased\",\n          \"nextPaymentDate\": \"string\",\n          \"onceOff\": {\n            \"paymentDate\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"intervalSchedule\": {\n            \"intervals\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"finalPaymentDate\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"paymentsRemaining\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"nonBusinessDayTreatment\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"lastWeekDay\": {\n            \"interval\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"lastWeekDay\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"finalPaymentDate\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"paymentsRemaining\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"nonBusinessDayTreatment\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"eventBased\": {\n            \"description\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        },\n        \"scheduledPaymentId\": \"string\",\n        \"status\": \"INACTIVE\",\n        \"nickname\": \"string\",\n        \"payeeReference\": \"string\"\n      },\n      {\n        \"from\": {\n          \"accountId\": {\n            \"description\": \"Unique identifier for the account.\",\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        },\n        \"payerReference\": \"string\",\n        \"paymentSet\": [\n          {\n            \"to\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"isAmountCalculated\": false,\n            \"amount\": \"string\",\n            \"currency\": \"AUD\"\n          },\n          {\n            \"to\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"isAmountCalculated\": false,\n            \"amount\": \"string\",\n            \"currency\": \"AUD\"\n          }\n        ],\n        \"recurrence\": {\n          \"recurrenceUType\": \"lastWeekDay\",\n          \"nextPaymentDate\": \"string\",\n          \"onceOff\": {\n            \"paymentDate\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"intervalSchedule\": {\n            \"intervals\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"finalPaymentDate\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"paymentsRemaining\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"nonBusinessDayTreatment\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"lastWeekDay\": {\n            \"interval\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"lastWeekDay\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"finalPaymentDate\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"paymentsRemaining\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"nonBusinessDayTreatment\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"eventBased\": {\n            \"description\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        },\n        \"scheduledPaymentId\": \"string\",\n        \"status\": \"ACTIVE\",\n        \"nickname\": \"string\",\n        \"payeeReference\": \"string\"\n      }\n    ]\n  },\n  \"links\": {\n    \"self\": \"string\",\n    \"first\": \"string\",\n    \"prev\": \"string\",\n    \"next\": \"string\",\n    \"last\": \"string\"\n  },\n  \"meta\": {\n    \"totalPages\": 6829,\n    \"totalRecords\": 8686\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6198d5d1-d642-4876-9ebc-880ae4d8070d",
+              "name": "The following error codes **MUST** be supported:<br/><ul class=\"error-code-list\"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Required Field](#error-400-field-missing)</li><li>[400 - Missing Required Header](#error-400-header-missing)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li></ul>",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "banking",
+                    "accounts",
+                    ":accountId",
+                    "payments",
+                    "scheduled"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "page-size",
+                      "value": "25"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "accountId",
+                      "description": "(Required) The _accountId_ to obtain data for. _accountId_ values are returned by account list endpoints."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Version of the API endpoint requested by the client. Must be set to a positive integer. The endpoint should respond with the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers). If the value of [_x-min-v_](#request-headers) is equal to or higher than the value of [_x-v_](#request-headers) then the [_x-min-v_](#request-headers) header should be treated as absent. If all versions requested are not supported then the endpoint **MUST** respond with a `406 Not Acceptable`. See [HTTP Headers](#request-headers).",
+                    "key": "x-v",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The endpoint should respond with the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers). If all versions requested are not supported then the endpoint **MUST** respond with a `406 Not Acceptable`.",
+                    "key": "x-min-v",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder **MUST** play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
+                    "key": "x-fapi-interaction-id",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The time when the customer last logged in to the Data Recipient Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**. Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.",
+                    "key": "x-fapi-auth-date",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The customer's original IP address if the customer is currently logged in to the Data Recipient Software Product. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.",
+                    "key": "x-fapi-customer-ip-address",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User-Agent header, if the customer is currently logged in to the Data Recipient Software Product. Mandatory for customer present calls. Not required for unattended or unauthenticated calls.",
+                    "key": "x-cds-client-headers",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "disabled": false,
+                  "description": "(Required) An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder **MUST** play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
+                  "key": "x-fapi-interaction-id",
+                  "value": "string"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"code\": \"string\",\n      \"detail\": \"string\",\n      \"title\": \"string\",\n      \"meta\": {\n        \"urn\": \"string\"\n      }\n    },\n    {\n      \"code\": \"string\",\n      \"detail\": \"string\",\n      \"title\": \"string\",\n      \"meta\": {\n        \"urn\": \"string\"\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b35b0f34-71ba-463f-b1ee-a57cd4e8c304",
+              "name": "The following error codes **MUST** be supported:<br/><ul class=\"error-code-list\"><li>[404 - Unavailable Banking Account](#error-404-authorisation-unavailable-banking-account)</li><li>[404 - Invalid Banking Account](#error-404-authorisation-invalid-banking-account)</li></ul>",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "banking",
+                    "accounts",
+                    ":accountId",
+                    "payments",
+                    "scheduled"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "page-size",
+                      "value": "25"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "accountId",
+                      "description": "(Required) The _accountId_ to obtain data for. _accountId_ values are returned by account list endpoints."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Version of the API endpoint requested by the client. Must be set to a positive integer. The endpoint should respond with the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers). If the value of [_x-min-v_](#request-headers) is equal to or higher than the value of [_x-v_](#request-headers) then the [_x-min-v_](#request-headers) header should be treated as absent. If all versions requested are not supported then the endpoint **MUST** respond with a `406 Not Acceptable`. See [HTTP Headers](#request-headers).",
+                    "key": "x-v",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The endpoint should respond with the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers). If all versions requested are not supported then the endpoint **MUST** respond with a `406 Not Acceptable`.",
+                    "key": "x-min-v",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder **MUST** play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
+                    "key": "x-fapi-interaction-id",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The time when the customer last logged in to the Data Recipient Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**. Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.",
+                    "key": "x-fapi-auth-date",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The customer's original IP address if the customer is currently logged in to the Data Recipient Software Product. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.",
+                    "key": "x-fapi-customer-ip-address",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User-Agent header, if the customer is currently logged in to the Data Recipient Software Product. Mandatory for customer present calls. Not required for unattended or unauthenticated calls.",
+                    "key": "x-cds-client-headers",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "disabled": false,
+                  "description": "(Required) An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder **MUST** play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
+                  "key": "x-fapi-interaction-id",
+                  "value": "string"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"code\": \"string\",\n      \"detail\": \"string\",\n      \"title\": \"string\",\n      \"meta\": {\n        \"urn\": \"string\"\n      }\n    },\n    {\n      \"code\": \"string\",\n      \"detail\": \"string\",\n      \"title\": \"string\",\n      \"meta\": {\n        \"urn\": \"string\"\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c2843818-d92e-4bd6-9989-c66f01ac9b42",
+              "name": "The following error codes **MUST** be supported:<br/><ul class=\"error-code-list\"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "banking",
+                    "accounts",
+                    ":accountId",
+                    "payments",
+                    "scheduled"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "page-size",
+                      "value": "25"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "accountId",
+                      "description": "(Required) The _accountId_ to obtain data for. _accountId_ values are returned by account list endpoints."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Version of the API endpoint requested by the client. Must be set to a positive integer. The endpoint should respond with the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers). If the value of [_x-min-v_](#request-headers) is equal to or higher than the value of [_x-v_](#request-headers) then the [_x-min-v_](#request-headers) header should be treated as absent. If all versions requested are not supported then the endpoint **MUST** respond with a `406 Not Acceptable`. See [HTTP Headers](#request-headers).",
+                    "key": "x-v",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The endpoint should respond with the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers). If all versions requested are not supported then the endpoint **MUST** respond with a `406 Not Acceptable`.",
+                    "key": "x-min-v",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder **MUST** play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
+                    "key": "x-fapi-interaction-id",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The time when the customer last logged in to the Data Recipient Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**. Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.",
+                    "key": "x-fapi-auth-date",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The customer's original IP address if the customer is currently logged in to the Data Recipient Software Product. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.",
+                    "key": "x-fapi-customer-ip-address",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User-Agent header, if the customer is currently logged in to the Data Recipient Software Product. Mandatory for customer present calls. Not required for unattended or unauthenticated calls.",
+                    "key": "x-cds-client-headers",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Acceptable",
+              "code": 406,
+              "header": [
+                {
+                  "disabled": false,
+                  "description": "(Required) An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder **MUST** play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
+                  "key": "x-fapi-interaction-id",
+                  "value": "string"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"code\": \"string\",\n      \"detail\": \"string\",\n      \"title\": \"string\",\n      \"meta\": {\n        \"urn\": \"string\"\n      }\n    },\n    {\n      \"code\": \"string\",\n      \"detail\": \"string\",\n      \"title\": \"string\",\n      \"meta\": {\n        \"urn\": \"string\"\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "66a39dc7-9094-4c49-88ad-bcbe49d7169b",
+              "name": "The following error codes **MUST** be supported:<br/><ul class=\"error-code-list\"><li>[422 - Invalid Page](#error-422-field-invalid-page)</li></ul>",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "banking",
+                    "accounts",
+                    ":accountId",
+                    "payments",
+                    "scheduled"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "page-size",
+                      "value": "25"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "accountId",
+                      "description": "(Required) The _accountId_ to obtain data for. _accountId_ values are returned by account list endpoints."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Version of the API endpoint requested by the client. Must be set to a positive integer. The endpoint should respond with the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers). If the value of [_x-min-v_](#request-headers) is equal to or higher than the value of [_x-v_](#request-headers) then the [_x-min-v_](#request-headers) header should be treated as absent. If all versions requested are not supported then the endpoint **MUST** respond with a `406 Not Acceptable`. See [HTTP Headers](#request-headers).",
+                    "key": "x-v",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The endpoint should respond with the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers). If all versions requested are not supported then the endpoint **MUST** respond with a `406 Not Acceptable`.",
+                    "key": "x-min-v",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder **MUST** play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
+                    "key": "x-fapi-interaction-id",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The time when the customer last logged in to the Data Recipient Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**. Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.",
+                    "key": "x-fapi-auth-date",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The customer's original IP address if the customer is currently logged in to the Data Recipient Software Product. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.",
+                    "key": "x-fapi-customer-ip-address",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User-Agent header, if the customer is currently logged in to the Data Recipient Software Product. Mandatory for customer present calls. Not required for unattended or unauthenticated calls.",
+                    "key": "x-cds-client-headers",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "disabled": false,
+                  "description": "(Required) An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder **MUST** play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
+                  "key": "x-fapi-interaction-id",
+                  "value": "string"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"code\": \"string\",\n      \"detail\": \"string\",\n      \"title\": \"string\",\n      \"meta\": {\n        \"urn\": \"string\"\n      }\n    },\n    {\n      \"code\": \"string\",\n      \"detail\": \"string\",\n      \"title\": \"string\",\n      \"meta\": {\n        \"urn\": \"string\"\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b4674677-90e3-4114-bdc2-1b13d2a9c1ff",
+          "name": "Get Scheduled Payments Bulk",
+          "request": {
+            "name": "Get Scheduled Payments Bulk",
+            "description": {
+              "content": "Obtain scheduled payments for multiple, filtered accounts that are the source of funds for the payments.\n\nObsolete versions: [v1](includes/obsolete/get-scheduled-payments-bulk-v1.html), [v2](includes/obsolete/get-scheduled-payments-bulk-v2.html).",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "banking",
+                "payments",
+                "scheduled"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "product-category",
+                  "value": "<string>",
+                  "description": "Used to filter results on the _productCategory_ field applicable to accounts. Any one of the valid values for this field can be supplied. If absent then all accounts returned."
+                },
+                {
+                  "disabled": false,
+                  "key": "open-status",
+                  "value": "ALL",
+                  "description": "Used to filter results according to open/closed status. Values can be `OPEN`, `CLOSED` or `ALL`. If absent then `ALL` is assumed."
+                },
+                {
+                  "disabled": false,
+                  "key": "is-owned",
+                  "value": "<boolean>",
+                  "description": "Filters accounts based on whether they are owned by the authorised customer. `true` for owned accounts, `false` for unowned accounts and absent for all accounts."
+                },
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "1",
+                  "description": "Page of results to request (standard pagination)."
+                },
+                {
+                  "disabled": false,
+                  "key": "page-size",
+                  "value": "25",
+                  "description": "Page size to request. Default is 25 (standard pagination)."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) Version of the API endpoint requested by the client. Must be set to a positive integer. The endpoint should respond with the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers). If the value of [_x-min-v_](#request-headers) is equal to or higher than the value of [_x-v_](#request-headers) then the [_x-min-v_](#request-headers) header should be treated as absent. If all versions requested are not supported then the endpoint **MUST** respond with a `406 Not Acceptable`. See [HTTP Headers](#request-headers).",
+                "key": "x-v",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The endpoint should respond with the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers). If all versions requested are not supported then the endpoint **MUST** respond with a `406 Not Acceptable`.",
+                "key": "x-min-v",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder **MUST** play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
+                "key": "x-fapi-interaction-id",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "The time when the customer last logged in to the Data Recipient Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**. Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.",
+                "key": "x-fapi-auth-date",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "The customer's original IP address if the customer is currently logged in to the Data Recipient Software Product. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.",
+                "key": "x-fapi-customer-ip-address",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User-Agent header, if the customer is currently logged in to the Data Recipient Software Product. Mandatory for customer present calls. Not required for unattended or unauthenticated calls.",
+                "key": "x-cds-client-headers",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "cb88e820-6bff-4cd6-a0e6-981516cad59d",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "banking",
+                    "payments",
+                    "scheduled"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "product-category",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "open-status",
+                      "value": "ALL"
+                    },
+                    {
+                      "key": "is-owned",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "page-size",
+                      "value": "25"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Version of the API endpoint requested by the client. Must be set to a positive integer. The endpoint should respond with the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers). If the value of [_x-min-v_](#request-headers) is equal to or higher than the value of [_x-v_](#request-headers) then the [_x-min-v_](#request-headers) header should be treated as absent. If all versions requested are not supported then the endpoint **MUST** respond with a `406 Not Acceptable`. See [HTTP Headers](#request-headers).",
+                    "key": "x-v",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The endpoint should respond with the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers). If all versions requested are not supported then the endpoint **MUST** respond with a `406 Not Acceptable`.",
+                    "key": "x-min-v",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder **MUST** play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
+                    "key": "x-fapi-interaction-id",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The time when the customer last logged in to the Data Recipient Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**. Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.",
+                    "key": "x-fapi-auth-date",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The customer's original IP address if the customer is currently logged in to the Data Recipient Software Product. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.",
+                    "key": "x-fapi-customer-ip-address",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User-Agent header, if the customer is currently logged in to the Data Recipient Software Product. Mandatory for customer present calls. Not required for unattended or unauthenticated calls.",
+                    "key": "x-cds-client-headers",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "disabled": false,
+                  "description": "(Required) The [payload version](#response-headers) that the endpoint has responded with.",
+                  "key": "x-v",
+                  "value": "string"
+                },
+                {
+                  "disabled": false,
+                  "description": "(Required) An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder **MUST** play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
+                  "key": "x-fapi-interaction-id",
+                  "value": "string"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": {\n    \"scheduledPayments\": [\n      {\n        \"from\": {\n          \"accountId\": {\n            \"description\": \"Unique identifier for the account.\",\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        },\n        \"payerReference\": \"string\",\n        \"paymentSet\": [\n          {\n            \"to\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"isAmountCalculated\": false,\n            \"amount\": \"string\",\n            \"currency\": \"AUD\"\n          },\n          {\n            \"to\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"isAmountCalculated\": false,\n            \"amount\": \"string\",\n            \"currency\": \"AUD\"\n          }\n        ],\n        \"recurrence\": {\n          \"recurrenceUType\": \"eventBased\",\n          \"nextPaymentDate\": \"string\",\n          \"onceOff\": {\n            \"paymentDate\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"intervalSchedule\": {\n            \"intervals\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"finalPaymentDate\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"paymentsRemaining\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"nonBusinessDayTreatment\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"lastWeekDay\": {\n            \"interval\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"lastWeekDay\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"finalPaymentDate\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"paymentsRemaining\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"nonBusinessDayTreatment\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"eventBased\": {\n            \"description\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        },\n        \"scheduledPaymentId\": \"string\",\n        \"status\": \"SKIP\",\n        \"nickname\": \"string\",\n        \"payeeReference\": \"string\"\n      },\n      {\n        \"from\": {\n          \"accountId\": {\n            \"description\": \"Unique identifier for the account.\",\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        },\n        \"payerReference\": \"string\",\n        \"paymentSet\": [\n          {\n            \"to\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"isAmountCalculated\": false,\n            \"amount\": \"string\",\n            \"currency\": \"AUD\"\n          },\n          {\n            \"to\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"isAmountCalculated\": false,\n            \"amount\": \"string\",\n            \"currency\": \"AUD\"\n          }\n        ],\n        \"recurrence\": {\n          \"recurrenceUType\": \"lastWeekDay\",\n          \"nextPaymentDate\": \"string\",\n          \"onceOff\": {\n            \"paymentDate\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"intervalSchedule\": {\n            \"intervals\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"finalPaymentDate\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"paymentsRemaining\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"nonBusinessDayTreatment\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"lastWeekDay\": {\n            \"interval\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"lastWeekDay\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"finalPaymentDate\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"paymentsRemaining\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"nonBusinessDayTreatment\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"eventBased\": {\n            \"description\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        },\n        \"scheduledPaymentId\": \"string\",\n        \"status\": \"ACTIVE\",\n        \"nickname\": \"string\",\n        \"payeeReference\": \"string\"\n      }\n    ]\n  },\n  \"links\": {\n    \"self\": \"string\",\n    \"first\": \"string\",\n    \"prev\": \"string\",\n    \"next\": \"string\",\n    \"last\": \"string\"\n  },\n  \"meta\": {\n    \"totalPages\": 2355,\n    \"totalRecords\": 3350\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c164eedf-485f-4b8e-b5bf-0987600611a6",
+              "name": "The following error codes **MUST** be supported:<br/><ul class=\"error-code-list\"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Required Field](#error-400-field-missing)</li><li>[400 - Missing Required Header](#error-400-header-missing)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li></ul>",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "banking",
+                    "payments",
+                    "scheduled"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "product-category",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "open-status",
+                      "value": "ALL"
+                    },
+                    {
+                      "key": "is-owned",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "page-size",
+                      "value": "25"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Version of the API endpoint requested by the client. Must be set to a positive integer. The endpoint should respond with the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers). If the value of [_x-min-v_](#request-headers) is equal to or higher than the value of [_x-v_](#request-headers) then the [_x-min-v_](#request-headers) header should be treated as absent. If all versions requested are not supported then the endpoint **MUST** respond with a `406 Not Acceptable`. See [HTTP Headers](#request-headers).",
+                    "key": "x-v",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The endpoint should respond with the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers). If all versions requested are not supported then the endpoint **MUST** respond with a `406 Not Acceptable`.",
+                    "key": "x-min-v",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder **MUST** play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
+                    "key": "x-fapi-interaction-id",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The time when the customer last logged in to the Data Recipient Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**. Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.",
+                    "key": "x-fapi-auth-date",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The customer's original IP address if the customer is currently logged in to the Data Recipient Software Product. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.",
+                    "key": "x-fapi-customer-ip-address",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User-Agent header, if the customer is currently logged in to the Data Recipient Software Product. Mandatory for customer present calls. Not required for unattended or unauthenticated calls.",
+                    "key": "x-cds-client-headers",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "disabled": false,
+                  "description": "(Required) An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder **MUST** play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
+                  "key": "x-fapi-interaction-id",
+                  "value": "string"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"code\": \"string\",\n      \"detail\": \"string\",\n      \"title\": \"string\",\n      \"meta\": {\n        \"urn\": \"string\"\n      }\n    },\n    {\n      \"code\": \"string\",\n      \"detail\": \"string\",\n      \"title\": \"string\",\n      \"meta\": {\n        \"urn\": \"string\"\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "93535f42-8ddd-4969-b597-eb16707a2fcd",
+              "name": "The following error codes **MUST** be supported:<br/><ul class=\"error-code-list\"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "banking",
+                    "payments",
+                    "scheduled"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "product-category",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "open-status",
+                      "value": "ALL"
+                    },
+                    {
+                      "key": "is-owned",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "page-size",
+                      "value": "25"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Version of the API endpoint requested by the client. Must be set to a positive integer. The endpoint should respond with the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers). If the value of [_x-min-v_](#request-headers) is equal to or higher than the value of [_x-v_](#request-headers) then the [_x-min-v_](#request-headers) header should be treated as absent. If all versions requested are not supported then the endpoint **MUST** respond with a `406 Not Acceptable`. See [HTTP Headers](#request-headers).",
+                    "key": "x-v",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The endpoint should respond with the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers). If all versions requested are not supported then the endpoint **MUST** respond with a `406 Not Acceptable`.",
+                    "key": "x-min-v",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder **MUST** play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
+                    "key": "x-fapi-interaction-id",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The time when the customer last logged in to the Data Recipient Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**. Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.",
+                    "key": "x-fapi-auth-date",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The customer's original IP address if the customer is currently logged in to the Data Recipient Software Product. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.",
+                    "key": "x-fapi-customer-ip-address",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User-Agent header, if the customer is currently logged in to the Data Recipient Software Product. Mandatory for customer present calls. Not required for unattended or unauthenticated calls.",
+                    "key": "x-cds-client-headers",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Acceptable",
+              "code": 406,
+              "header": [
+                {
+                  "disabled": false,
+                  "description": "(Required) An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder **MUST** play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
+                  "key": "x-fapi-interaction-id",
+                  "value": "string"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"code\": \"string\",\n      \"detail\": \"string\",\n      \"title\": \"string\",\n      \"meta\": {\n        \"urn\": \"string\"\n      }\n    },\n    {\n      \"code\": \"string\",\n      \"detail\": \"string\",\n      \"title\": \"string\",\n      \"meta\": {\n        \"urn\": \"string\"\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "31ad2ce7-2a07-4efb-8f23-83ecb74ea486",
+              "name": "The following error codes **MUST** be supported:<br/><ul class=\"error-code-list\"><li>[422 - Invalid Page](#error-422-field-invalid-page)</li></ul>",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "banking",
+                    "payments",
+                    "scheduled"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "product-category",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "open-status",
+                      "value": "ALL"
+                    },
+                    {
+                      "key": "is-owned",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "page-size",
+                      "value": "25"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Version of the API endpoint requested by the client. Must be set to a positive integer. The endpoint should respond with the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers). If the value of [_x-min-v_](#request-headers) is equal to or higher than the value of [_x-v_](#request-headers) then the [_x-min-v_](#request-headers) header should be treated as absent. If all versions requested are not supported then the endpoint **MUST** respond with a `406 Not Acceptable`. See [HTTP Headers](#request-headers).",
+                    "key": "x-v",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The endpoint should respond with the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers). If all versions requested are not supported then the endpoint **MUST** respond with a `406 Not Acceptable`.",
+                    "key": "x-min-v",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder **MUST** play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
+                    "key": "x-fapi-interaction-id",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The time when the customer last logged in to the Data Recipient Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**. Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.",
+                    "key": "x-fapi-auth-date",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The customer's original IP address if the customer is currently logged in to the Data Recipient Software Product. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.",
+                    "key": "x-fapi-customer-ip-address",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User-Agent header, if the customer is currently logged in to the Data Recipient Software Product. Mandatory for customer present calls. Not required for unattended or unauthenticated calls.",
+                    "key": "x-cds-client-headers",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "disabled": false,
+                  "description": "(Required) An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder **MUST** play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
+                  "key": "x-fapi-interaction-id",
+                  "value": "string"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"code\": \"string\",\n      \"detail\": \"string\",\n      \"title\": \"string\",\n      \"meta\": {\n        \"urn\": \"string\"\n      }\n    },\n    {\n      \"code\": \"string\",\n      \"detail\": \"string\",\n      \"title\": \"string\",\n      \"meta\": {\n        \"urn\": \"string\"\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "37a591fb-82fa-48b6-bbb8-879bc2fe768b",
+          "name": "Get Scheduled Payments For Specific Accounts",
+          "request": {
+            "name": "Get Scheduled Payments For Specific Accounts",
+            "description": {
+              "content": "Obtain scheduled payments for a specified list of accounts.\n\nObsolete versions: [v1](includes/obsolete/get-scheduled-payments-for-specific-accounts-v1.html).",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "banking",
+                "payments",
+                "scheduled"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "1",
+                  "description": "Page of results to request (standard pagination)."
+                },
+                {
+                  "disabled": false,
+                  "key": "page-size",
+                  "value": "25",
+                  "description": "Page size to request. Default is 25 (standard pagination)."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) Version of the API endpoint requested by the client. Must be set to a positive integer. The endpoint should respond with the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers). If the value of [_x-min-v_](#request-headers) is equal to or higher than the value of [_x-v_](#request-headers) then the [_x-min-v_](#request-headers) header should be treated as absent. If all versions requested are not supported then the endpoint **MUST** respond with a `406 Not Acceptable`. See [HTTP Headers](#request-headers).",
+                "key": "x-v",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The endpoint should respond with the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers). If all versions requested are not supported then the endpoint **MUST** respond with a `406 Not Acceptable`.",
+                "key": "x-min-v",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder **MUST** play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
+                "key": "x-fapi-interaction-id",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "The time when the customer last logged in to the Data Recipient Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**. Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.",
+                "key": "x-fapi-auth-date",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "The customer's original IP address if the customer is currently logged in to the Data Recipient Software Product. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.",
+                "key": "x-fapi-customer-ip-address",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User-Agent header, if the customer is currently logged in to the Data Recipient Software Product. Mandatory for customer present calls. Not required for unattended or unauthenticated calls.",
+                "key": "x-cds-client-headers",
+                "value": "<string>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"data\": {\n    \"accountIds\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  },\n  \"meta\": \"<object>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "fd92ff7d-3b4e-4fd8-93a1-392f77e8e146",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "banking",
+                    "payments",
+                    "scheduled"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "page-size",
+                      "value": "25"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Version of the API endpoint requested by the client. Must be set to a positive integer. The endpoint should respond with the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers). If the value of [_x-min-v_](#request-headers) is equal to or higher than the value of [_x-v_](#request-headers) then the [_x-min-v_](#request-headers) header should be treated as absent. If all versions requested are not supported then the endpoint **MUST** respond with a `406 Not Acceptable`. See [HTTP Headers](#request-headers).",
+                    "key": "x-v",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The endpoint should respond with the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers). If all versions requested are not supported then the endpoint **MUST** respond with a `406 Not Acceptable`.",
+                    "key": "x-min-v",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder **MUST** play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
+                    "key": "x-fapi-interaction-id",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The time when the customer last logged in to the Data Recipient Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**. Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.",
+                    "key": "x-fapi-auth-date",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The customer's original IP address if the customer is currently logged in to the Data Recipient Software Product. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.",
+                    "key": "x-fapi-customer-ip-address",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User-Agent header, if the customer is currently logged in to the Data Recipient Software Product. Mandatory for customer present calls. Not required for unattended or unauthenticated calls.",
+                    "key": "x-cds-client-headers",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "disabled": false,
+                  "description": "(Required) The [payload version](#response-headers) that the endpoint has responded with.",
+                  "key": "x-v",
+                  "value": "string"
+                },
+                {
+                  "disabled": false,
+                  "description": "(Required) An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder **MUST** play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
+                  "key": "x-fapi-interaction-id",
+                  "value": "string"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": {\n    \"scheduledPayments\": [\n      {\n        \"from\": {\n          \"accountId\": {\n            \"description\": \"Unique identifier for the account.\",\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        },\n        \"payerReference\": \"string\",\n        \"paymentSet\": [\n          {\n            \"to\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"isAmountCalculated\": false,\n            \"amount\": \"string\",\n            \"currency\": \"AUD\"\n          },\n          {\n            \"to\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"isAmountCalculated\": false,\n            \"amount\": \"string\",\n            \"currency\": \"AUD\"\n          }\n        ],\n        \"recurrence\": {\n          \"recurrenceUType\": \"eventBased\",\n          \"nextPaymentDate\": \"string\",\n          \"onceOff\": {\n            \"paymentDate\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"intervalSchedule\": {\n            \"intervals\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"finalPaymentDate\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"paymentsRemaining\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"nonBusinessDayTreatment\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"lastWeekDay\": {\n            \"interval\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"lastWeekDay\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"finalPaymentDate\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"paymentsRemaining\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"nonBusinessDayTreatment\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"eventBased\": {\n            \"description\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        },\n        \"scheduledPaymentId\": \"string\",\n        \"status\": \"SKIP\",\n        \"nickname\": \"string\",\n        \"payeeReference\": \"string\"\n      },\n      {\n        \"from\": {\n          \"accountId\": {\n            \"description\": \"Unique identifier for the account.\",\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        },\n        \"payerReference\": \"string\",\n        \"paymentSet\": [\n          {\n            \"to\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"isAmountCalculated\": false,\n            \"amount\": \"string\",\n            \"currency\": \"AUD\"\n          },\n          {\n            \"to\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"isAmountCalculated\": false,\n            \"amount\": \"string\",\n            \"currency\": \"AUD\"\n          }\n        ],\n        \"recurrence\": {\n          \"recurrenceUType\": \"lastWeekDay\",\n          \"nextPaymentDate\": \"string\",\n          \"onceOff\": {\n            \"paymentDate\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"intervalSchedule\": {\n            \"intervals\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"finalPaymentDate\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"paymentsRemaining\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"nonBusinessDayTreatment\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"lastWeekDay\": {\n            \"interval\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"lastWeekDay\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"finalPaymentDate\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"paymentsRemaining\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"nonBusinessDayTreatment\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"eventBased\": {\n            \"description\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        },\n        \"scheduledPaymentId\": \"string\",\n        \"status\": \"ACTIVE\",\n        \"nickname\": \"string\",\n        \"payeeReference\": \"string\"\n      }\n    ]\n  },\n  \"links\": {\n    \"self\": \"string\",\n    \"first\": \"string\",\n    \"prev\": \"string\",\n    \"next\": \"string\",\n    \"last\": \"string\"\n  },\n  \"meta\": {\n    \"totalPages\": 2355,\n    \"totalRecords\": 3350\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "fa65db4d-eaf2-4884-95bb-9bf769f44d8b",
+              "name": "The following error codes **MUST** be supported:<br/><ul class=\"error-code-list\"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Required Field](#error-400-field-missing)</li><li>[400 - Missing Required Header](#error-400-header-missing)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li></ul>",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "banking",
+                    "payments",
+                    "scheduled"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "page-size",
+                      "value": "25"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Version of the API endpoint requested by the client. Must be set to a positive integer. The endpoint should respond with the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers). If the value of [_x-min-v_](#request-headers) is equal to or higher than the value of [_x-v_](#request-headers) then the [_x-min-v_](#request-headers) header should be treated as absent. If all versions requested are not supported then the endpoint **MUST** respond with a `406 Not Acceptable`. See [HTTP Headers](#request-headers).",
+                    "key": "x-v",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The endpoint should respond with the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers). If all versions requested are not supported then the endpoint **MUST** respond with a `406 Not Acceptable`.",
+                    "key": "x-min-v",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder **MUST** play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
+                    "key": "x-fapi-interaction-id",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The time when the customer last logged in to the Data Recipient Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**. Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.",
+                    "key": "x-fapi-auth-date",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The customer's original IP address if the customer is currently logged in to the Data Recipient Software Product. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.",
+                    "key": "x-fapi-customer-ip-address",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User-Agent header, if the customer is currently logged in to the Data Recipient Software Product. Mandatory for customer present calls. Not required for unattended or unauthenticated calls.",
+                    "key": "x-cds-client-headers",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "disabled": false,
+                  "description": "(Required) An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder **MUST** play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
+                  "key": "x-fapi-interaction-id",
+                  "value": "string"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"code\": \"string\",\n      \"detail\": \"string\",\n      \"title\": \"string\",\n      \"meta\": {\n        \"urn\": \"string\"\n      }\n    },\n    {\n      \"code\": \"string\",\n      \"detail\": \"string\",\n      \"title\": \"string\",\n      \"meta\": {\n        \"urn\": \"string\"\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a27fee75-4a73-4b0a-aba2-c33c437d5737",
+              "name": "The following error codes **MUST** be supported:<br/><ul class=\"error-code-list\"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "banking",
+                    "payments",
+                    "scheduled"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "page-size",
+                      "value": "25"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Version of the API endpoint requested by the client. Must be set to a positive integer. The endpoint should respond with the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers). If the value of [_x-min-v_](#request-headers) is equal to or higher than the value of [_x-v_](#request-headers) then the [_x-min-v_](#request-headers) header should be treated as absent. If all versions requested are not supported then the endpoint **MUST** respond with a `406 Not Acceptable`. See [HTTP Headers](#request-headers).",
+                    "key": "x-v",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The endpoint should respond with the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers). If all versions requested are not supported then the endpoint **MUST** respond with a `406 Not Acceptable`.",
+                    "key": "x-min-v",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder **MUST** play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
+                    "key": "x-fapi-interaction-id",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The time when the customer last logged in to the Data Recipient Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**. Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.",
+                    "key": "x-fapi-auth-date",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The customer's original IP address if the customer is currently logged in to the Data Recipient Software Product. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.",
+                    "key": "x-fapi-customer-ip-address",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User-Agent header, if the customer is currently logged in to the Data Recipient Software Product. Mandatory for customer present calls. Not required for unattended or unauthenticated calls.",
+                    "key": "x-cds-client-headers",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Not Acceptable",
+              "code": 406,
+              "header": [
+                {
+                  "disabled": false,
+                  "description": "(Required) An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder **MUST** play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
+                  "key": "x-fapi-interaction-id",
+                  "value": "string"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"code\": \"string\",\n      \"detail\": \"string\",\n      \"title\": \"string\",\n      \"meta\": {\n        \"urn\": \"string\"\n      }\n    },\n    {\n      \"code\": \"string\",\n      \"detail\": \"string\",\n      \"title\": \"string\",\n      \"meta\": {\n        \"urn\": \"string\"\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ef7c684b-7d3d-43c7-8dac-0a49bcd31bac",
+              "name": "The following error codes **MUST** be supported:<br/><ul class=\"error-code-list\"><li>[422 - Invalid Page](#error-422-field-invalid-page)</li><li>[422 - Unavailable Banking Account](#error-422-authorisation-unavailable-banking-account)</li><li>[422 - Invalid Banking Account](#error-422-authorisation-invalid-banking-account)</li></ul>",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "banking",
+                    "payments",
+                    "scheduled"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "page-size",
+                      "value": "25"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Version of the API endpoint requested by the client. Must be set to a positive integer. The endpoint should respond with the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers). If the value of [_x-min-v_](#request-headers) is equal to or higher than the value of [_x-v_](#request-headers) then the [_x-min-v_](#request-headers) header should be treated as absent. If all versions requested are not supported then the endpoint **MUST** respond with a `406 Not Acceptable`. See [HTTP Headers](#request-headers).",
+                    "key": "x-v",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The endpoint should respond with the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers). If all versions requested are not supported then the endpoint **MUST** respond with a `406 Not Acceptable`.",
+                    "key": "x-min-v",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder **MUST** play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
+                    "key": "x-fapi-interaction-id",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The time when the customer last logged in to the Data Recipient Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**. Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.",
+                    "key": "x-fapi-auth-date",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The customer's original IP address if the customer is currently logged in to the Data Recipient Software Product. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.",
+                    "key": "x-fapi-customer-ip-address",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User-Agent header, if the customer is currently logged in to the Data Recipient Software Product. Mandatory for customer present calls. Not required for unattended or unauthenticated calls.",
+                    "key": "x-cds-client-headers",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "disabled": false,
+                  "description": "(Required) An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder **MUST** play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
+                  "key": "x-fapi-interaction-id",
+                  "value": "string"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"code\": \"string\",\n      \"detail\": \"string\",\n      \"title\": \"string\",\n      \"meta\": {\n        \"urn\": \"string\"\n      }\n    },\n    {\n      \"code\": \"string\",\n      \"detail\": \"string\",\n      \"title\": \"string\",\n      \"meta\": {\n        \"urn\": \"string\"\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "475a1b9f-8151-41c8-b484-66b166c1ab22",
+          "name": "Get Instalment Plans for Account",
+          "request": {
+            "name": "Get Instalment Plans for Account",
+            "description": {
+              "content": "Obtain instalment plans for a single specified account. The response **MUST** be ordered by plan _creationDate_ in descending order. If _isInstalmentDetailAvailable_ was specified as `true` for the provided _accountId_ but no plans match the provided parameters, an empty array **MUST** be returned. If _isInstalmentDetailAvailable_ was specified as `false` for the provided _accountId_, then the endpoint **MAY** respond with [404 - Resource Not Implemented](#error-404-resource-not-implemented).",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "banking",
+                "accounts",
+                ":accountId",
+                "payments",
+                "plans"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "plan-status",
+                  "value": "ACTIVE",
+                  "description": "Allows for the filtering of plans based on their schedule status:<ul><li>`ACTIVE` requests plans where one or more scheduled instalments have _isPaid_ equal to `false`,</li><li>`INACTIVE` requests plans where all scheduled instalments have _isPaid_ equal to `true`,</li><li>`ALL` requests all `ACTIVE` and `INACTIVE` plans.</li></ul>"
+                },
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "1",
+                  "description": "Page of results to request (standard pagination)."
+                },
+                {
+                  "disabled": false,
+                  "key": "page-size",
+                  "value": "25",
+                  "description": "Page size to request. Default is 25 (standard pagination)."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "accountId",
+                  "description": "(Required) The _accountId_ to obtain data for. _accountId_ values are returned by account list endpoints."
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) Version of the API endpoint requested by the client. Must be set to a positive integer. The endpoint should respond with the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers). If the value of [_x-min-v_](#request-headers) is equal to or higher than the value of [_x-v_](#request-headers) then the [_x-min-v_](#request-headers) header should be treated as absent. If all versions requested are not supported then the endpoint **MUST** respond with a `406 Not Acceptable`. See [HTTP Headers](#request-headers).",
+                "key": "x-v",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The endpoint should respond with the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers). If all versions requested are not supported then the endpoint **MUST** respond with a `406 Not Acceptable`.",
+                "key": "x-min-v",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder **MUST** play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
+                "key": "x-fapi-interaction-id",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "The time when the customer last logged in to the Data Recipient Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**. Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.",
+                "key": "x-fapi-auth-date",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "The customer's original IP address if the customer is currently logged in to the Data Recipient Software Product. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.",
+                "key": "x-fapi-customer-ip-address",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User-Agent header, if the customer is currently logged in to the Data Recipient Software Product. Mandatory for customer present calls. Not required for unattended or unauthenticated calls.",
+                "key": "x-cds-client-headers",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "2b9b8677-db2c-43ec-8a51-b6ea9665042a",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "banking",
+                    "accounts",
+                    ":accountId",
+                    "payments",
+                    "plans"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "plan-status",
+                      "value": "ACTIVE"
+                    },
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "page-size",
+                      "value": "25"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "accountId",
+                      "description": "(Required) The _accountId_ to obtain data for. _accountId_ values are returned by account list endpoints."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Version of the API endpoint requested by the client. Must be set to a positive integer. The endpoint should respond with the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers). If the value of [_x-min-v_](#request-headers) is equal to or higher than the value of [_x-v_](#request-headers) then the [_x-min-v_](#request-headers) header should be treated as absent. If all versions requested are not supported then the endpoint **MUST** respond with a `406 Not Acceptable`. See [HTTP Headers](#request-headers).",
+                    "key": "x-v",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The endpoint should respond with the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers). If all versions requested are not supported then the endpoint **MUST** respond with a `406 Not Acceptable`.",
+                    "key": "x-min-v",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder **MUST** play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
+                    "key": "x-fapi-interaction-id",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The time when the customer last logged in to the Data Recipient Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**. Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.",
+                    "key": "x-fapi-auth-date",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The customer's original IP address if the customer is currently logged in to the Data Recipient Software Product. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.",
+                    "key": "x-fapi-customer-ip-address",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User-Agent header, if the customer is currently logged in to the Data Recipient Software Product. Mandatory for customer present calls. Not required for unattended or unauthenticated calls.",
+                    "key": "x-cds-client-headers",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "disabled": false,
+                  "description": "(Required) The [payload version](#response-headers) that the endpoint has responded with.",
+                  "key": "x-v",
+                  "value": "string"
+                },
+                {
+                  "disabled": false,
+                  "description": "(Required) An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder **MUST** play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
+                  "key": "x-fapi-interaction-id",
+                  "value": "string"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": {\n    \"plans\": [\n      {\n        \"accountId\": \"<string>\",\n        \"amount\": \"string\",\n        \"creationDate\": \"string\",\n        \"duration\": \"string\",\n        \"instalmentInterval\": \"string\",\n        \"merchantName\": \"string\",\n        \"planId\": \"string\",\n        \"planNickname\": \"string\",\n        \"planReference\": \"string\",\n        \"schedule\": [\n          {\n            \"amountDue\": \"string\",\n            \"dueDate\": \"string\",\n            \"isPaid\": false\n          },\n          {\n            \"amountDue\": \"string\",\n            \"dueDate\": \"string\",\n            \"isPaid\": false\n          }\n        ],\n        \"merchantCategoryCode\": \"string\",\n        \"planCurrency\": \"AUD\",\n        \"planCharge\": \"string\",\n        \"planRate\": \"string\"\n      },\n      {\n        \"accountId\": \"<string>\",\n        \"amount\": \"string\",\n        \"creationDate\": \"string\",\n        \"duration\": \"string\",\n        \"instalmentInterval\": \"string\",\n        \"merchantName\": \"string\",\n        \"planId\": \"string\",\n        \"planNickname\": \"string\",\n        \"planReference\": \"string\",\n        \"schedule\": [\n          {\n            \"amountDue\": \"string\",\n            \"dueDate\": \"string\",\n            \"isPaid\": false\n          },\n          {\n            \"amountDue\": \"string\",\n            \"dueDate\": \"string\",\n            \"isPaid\": false\n          }\n        ],\n        \"merchantCategoryCode\": \"string\",\n        \"planCurrency\": \"AUD\",\n        \"planCharge\": \"string\",\n        \"planRate\": \"string\"\n      }\n    ]\n  },\n  \"links\": {\n    \"self\": \"string\",\n    \"first\": \"string\",\n    \"prev\": \"string\",\n    \"next\": \"string\",\n    \"last\": \"string\"\n  },\n  \"meta\": {\n    \"totalPages\": 2376,\n    \"totalRecords\": 5005\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9bc49806-932b-49d4-8ea8-134fca241b02",
+              "name": "The following error codes **MUST** be supported:<br/><ul class=\"error-code-list\"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Required Field](#error-400-field-missing)</li><li>[400 - Missing Required Header](#error-400-header-missing)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li></ul>",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "banking",
+                    "accounts",
+                    ":accountId",
+                    "payments",
+                    "plans"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "plan-status",
+                      "value": "ACTIVE"
+                    },
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "page-size",
+                      "value": "25"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "accountId",
+                      "description": "(Required) The _accountId_ to obtain data for. _accountId_ values are returned by account list endpoints."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Version of the API endpoint requested by the client. Must be set to a positive integer. The endpoint should respond with the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers). If the value of [_x-min-v_](#request-headers) is equal to or higher than the value of [_x-v_](#request-headers) then the [_x-min-v_](#request-headers) header should be treated as absent. If all versions requested are not supported then the endpoint **MUST** respond with a `406 Not Acceptable`. See [HTTP Headers](#request-headers).",
+                    "key": "x-v",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The endpoint should respond with the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers). If all versions requested are not supported then the endpoint **MUST** respond with a `406 Not Acceptable`.",
+                    "key": "x-min-v",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder **MUST** play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
+                    "key": "x-fapi-interaction-id",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The time when the customer last logged in to the Data Recipient Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**. Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.",
+                    "key": "x-fapi-auth-date",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The customer's original IP address if the customer is currently logged in to the Data Recipient Software Product. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.",
+                    "key": "x-fapi-customer-ip-address",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User-Agent header, if the customer is currently logged in to the Data Recipient Software Product. Mandatory for customer present calls. Not required for unattended or unauthenticated calls.",
+                    "key": "x-cds-client-headers",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "disabled": false,
+                  "description": "(Required) An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder **MUST** play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
+                  "key": "x-fapi-interaction-id",
+                  "value": "string"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"code\": \"string\",\n      \"detail\": \"string\",\n      \"title\": \"string\",\n      \"meta\": {\n        \"urn\": \"string\"\n      }\n    },\n    {\n      \"code\": \"string\",\n      \"detail\": \"string\",\n      \"title\": \"string\",\n      \"meta\": {\n        \"urn\": \"string\"\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "391d18a3-0a5a-4e03-b03d-6dcd10d2d6f1",
+              "name": "The following error codes **MUST** be supported:<br/><ul class=\"error-code-list\"><li>[404 - Unavailable Banking Account](#error-404-authorisation-unavailable-banking-account)</li><li>[404 - Invalid Banking Account](#error-404-authorisation-invalid-banking-account)</li></ul>",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "banking",
+                    "accounts",
+                    ":accountId",
+                    "payments",
+                    "plans"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "plan-status",
+                      "value": "ACTIVE"
+                    },
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "page-size",
+                      "value": "25"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "accountId",
+                      "description": "(Required) The _accountId_ to obtain data for. _accountId_ values are returned by account list endpoints."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Version of the API endpoint requested by the client. Must be set to a positive integer. The endpoint should respond with the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers). If the value of [_x-min-v_](#request-headers) is equal to or higher than the value of [_x-v_](#request-headers) then the [_x-min-v_](#request-headers) header should be treated as absent. If all versions requested are not supported then the endpoint **MUST** respond with a `406 Not Acceptable`. See [HTTP Headers](#request-headers).",
+                    "key": "x-v",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The endpoint should respond with the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers). If all versions requested are not supported then the endpoint **MUST** respond with a `406 Not Acceptable`.",
+                    "key": "x-min-v",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder **MUST** play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
+                    "key": "x-fapi-interaction-id",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The time when the customer last logged in to the Data Recipient Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**. Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.",
+                    "key": "x-fapi-auth-date",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The customer's original IP address if the customer is currently logged in to the Data Recipient Software Product. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.",
+                    "key": "x-fapi-customer-ip-address",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User-Agent header, if the customer is currently logged in to the Data Recipient Software Product. Mandatory for customer present calls. Not required for unattended or unauthenticated calls.",
+                    "key": "x-cds-client-headers",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "disabled": false,
+                  "description": "(Required) An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder **MUST** play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
+                  "key": "x-fapi-interaction-id",
+                  "value": "string"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"code\": \"string\",\n      \"detail\": \"string\",\n      \"title\": \"string\",\n      \"meta\": {\n        \"urn\": \"string\"\n      }\n    },\n    {\n      \"code\": \"string\",\n      \"detail\": \"string\",\n      \"title\": \"string\",\n      \"meta\": {\n        \"urn\": \"string\"\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "daa37abf-8618-498b-b2ee-70c91248f53b",
+              "name": "The following error codes **MUST** be supported:<br/><ul class=\"error-code-list\"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "banking",
+                    "accounts",
+                    ":accountId",
+                    "payments",
+                    "plans"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "plan-status",
+                      "value": "ACTIVE"
+                    },
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "page-size",
+                      "value": "25"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "accountId",
+                      "description": "(Required) The _accountId_ to obtain data for. _accountId_ values are returned by account list endpoints."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Version of the API endpoint requested by the client. Must be set to a positive integer. The endpoint should respond with the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers). If the value of [_x-min-v_](#request-headers) is equal to or higher than the value of [_x-v_](#request-headers) then the [_x-min-v_](#request-headers) header should be treated as absent. If all versions requested are not supported then the endpoint **MUST** respond with a `406 Not Acceptable`. See [HTTP Headers](#request-headers).",
+                    "key": "x-v",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The endpoint should respond with the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers). If all versions requested are not supported then the endpoint **MUST** respond with a `406 Not Acceptable`.",
+                    "key": "x-min-v",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder **MUST** play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
+                    "key": "x-fapi-interaction-id",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The time when the customer last logged in to the Data Recipient Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**. Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.",
+                    "key": "x-fapi-auth-date",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The customer's original IP address if the customer is currently logged in to the Data Recipient Software Product. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.",
+                    "key": "x-fapi-customer-ip-address",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User-Agent header, if the customer is currently logged in to the Data Recipient Software Product. Mandatory for customer present calls. Not required for unattended or unauthenticated calls.",
+                    "key": "x-cds-client-headers",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Acceptable",
+              "code": 406,
+              "header": [
+                {
+                  "disabled": false,
+                  "description": "(Required) An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder **MUST** play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
+                  "key": "x-fapi-interaction-id",
+                  "value": "string"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"code\": \"string\",\n      \"detail\": \"string\",\n      \"title\": \"string\",\n      \"meta\": {\n        \"urn\": \"string\"\n      }\n    },\n    {\n      \"code\": \"string\",\n      \"detail\": \"string\",\n      \"title\": \"string\",\n      \"meta\": {\n        \"urn\": \"string\"\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "8b1b9d8e-e1e1-4910-81cc-03109dd0d304",
+              "name": "The following error codes **MUST** be supported:<br/><ul class=\"error-code-list\"><li>[422 - Invalid Page](#error-422-field-invalid-page)</li></ul>",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "banking",
+                    "accounts",
+                    ":accountId",
+                    "payments",
+                    "plans"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "plan-status",
+                      "value": "ACTIVE"
+                    },
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "page-size",
+                      "value": "25"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "accountId",
+                      "description": "(Required) The _accountId_ to obtain data for. _accountId_ values are returned by account list endpoints."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Version of the API endpoint requested by the client. Must be set to a positive integer. The endpoint should respond with the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers). If the value of [_x-min-v_](#request-headers) is equal to or higher than the value of [_x-v_](#request-headers) then the [_x-min-v_](#request-headers) header should be treated as absent. If all versions requested are not supported then the endpoint **MUST** respond with a `406 Not Acceptable`. See [HTTP Headers](#request-headers).",
+                    "key": "x-v",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The endpoint should respond with the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers). If all versions requested are not supported then the endpoint **MUST** respond with a `406 Not Acceptable`.",
+                    "key": "x-min-v",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder **MUST** play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
+                    "key": "x-fapi-interaction-id",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The time when the customer last logged in to the Data Recipient Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**. Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.",
+                    "key": "x-fapi-auth-date",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The customer's original IP address if the customer is currently logged in to the Data Recipient Software Product. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.",
+                    "key": "x-fapi-customer-ip-address",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User-Agent header, if the customer is currently logged in to the Data Recipient Software Product. Mandatory for customer present calls. Not required for unattended or unauthenticated calls.",
+                    "key": "x-cds-client-headers",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "disabled": false,
+                  "description": "(Required) An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder **MUST** play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
+                  "key": "x-fapi-interaction-id",
+                  "value": "string"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"code\": \"string\",\n      \"detail\": \"string\",\n      \"title\": \"string\",\n      \"meta\": {\n        \"urn\": \"string\"\n      }\n    },\n    {\n      \"code\": \"string\",\n      \"detail\": \"string\",\n      \"title\": \"string\",\n      \"meta\": {\n        \"urn\": \"string\"\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c6ec1da4-f3ab-478c-8267-8694d00fa119",
+          "name": "Get Instalment Plans Bulk",
+          "request": {
+            "name": "Get Instalment Plans Bulk",
+            "description": {
+              "content": "Obtain instalment plans for multiple accounts. The response **MUST** be ordered by plan _creationDate_ in descending order. If instalments are not supported for any account type, the endpoint **MAY** respond with [404 - Resource Not Implemented](#error-404-resource-not-implemented).",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "banking",
+                "accounts",
+                "payments",
+                "plans"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "plan-status",
+                  "value": "ACTIVE",
+                  "description": "Allows for the filtering of plans based on their schedule status:<ul><li>`ACTIVE` requests plans where one or more scheduled instalments have _isPaid_ equal to `false`,</li><li>`INACTIVE` requests plans where all scheduled instalments have _isPaid_ equal to `true`,</li><li>`ALL` requests all `ACTIVE` and `INACTIVE` plans.</li></ul>"
+                },
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "1",
+                  "description": "Page of results to request (standard pagination)."
+                },
+                {
+                  "disabled": false,
+                  "key": "page-size",
+                  "value": "25",
+                  "description": "Page size to request. Default is 25 (standard pagination)."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) Version of the API endpoint requested by the client. Must be set to a positive integer. The endpoint should respond with the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers). If the value of [_x-min-v_](#request-headers) is equal to or higher than the value of [_x-v_](#request-headers) then the [_x-min-v_](#request-headers) header should be treated as absent. If all versions requested are not supported then the endpoint **MUST** respond with a `406 Not Acceptable`. See [HTTP Headers](#request-headers).",
+                "key": "x-v",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The endpoint should respond with the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers). If all versions requested are not supported then the endpoint **MUST** respond with a `406 Not Acceptable`.",
+                "key": "x-min-v",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder **MUST** play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
+                "key": "x-fapi-interaction-id",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "The time when the customer last logged in to the Data Recipient Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**. Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.",
+                "key": "x-fapi-auth-date",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "The customer's original IP address if the customer is currently logged in to the Data Recipient Software Product. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.",
+                "key": "x-fapi-customer-ip-address",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User-Agent header, if the customer is currently logged in to the Data Recipient Software Product. Mandatory for customer present calls. Not required for unattended or unauthenticated calls.",
+                "key": "x-cds-client-headers",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "9d431837-ef69-4fd9-89e5-c516fec4bb1a",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "banking",
+                    "accounts",
+                    "payments",
+                    "plans"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "plan-status",
+                      "value": "ACTIVE"
+                    },
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "page-size",
+                      "value": "25"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Version of the API endpoint requested by the client. Must be set to a positive integer. The endpoint should respond with the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers). If the value of [_x-min-v_](#request-headers) is equal to or higher than the value of [_x-v_](#request-headers) then the [_x-min-v_](#request-headers) header should be treated as absent. If all versions requested are not supported then the endpoint **MUST** respond with a `406 Not Acceptable`. See [HTTP Headers](#request-headers).",
+                    "key": "x-v",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The endpoint should respond with the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers). If all versions requested are not supported then the endpoint **MUST** respond with a `406 Not Acceptable`.",
+                    "key": "x-min-v",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder **MUST** play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
+                    "key": "x-fapi-interaction-id",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The time when the customer last logged in to the Data Recipient Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**. Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.",
+                    "key": "x-fapi-auth-date",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The customer's original IP address if the customer is currently logged in to the Data Recipient Software Product. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.",
+                    "key": "x-fapi-customer-ip-address",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User-Agent header, if the customer is currently logged in to the Data Recipient Software Product. Mandatory for customer present calls. Not required for unattended or unauthenticated calls.",
+                    "key": "x-cds-client-headers",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "disabled": false,
+                  "description": "(Required) The [payload version](#response-headers) that the endpoint has responded with.",
+                  "key": "x-v",
+                  "value": "string"
+                },
+                {
+                  "disabled": false,
+                  "description": "(Required) An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder **MUST** play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
+                  "key": "x-fapi-interaction-id",
+                  "value": "string"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": {\n    \"plans\": [\n      {\n        \"accountId\": \"<string>\",\n        \"amount\": \"string\",\n        \"creationDate\": \"string\",\n        \"duration\": \"string\",\n        \"instalmentInterval\": \"string\",\n        \"merchantName\": \"string\",\n        \"planId\": \"string\",\n        \"planNickname\": \"string\",\n        \"planReference\": \"string\",\n        \"schedule\": [\n          {\n            \"amountDue\": \"string\",\n            \"dueDate\": \"string\",\n            \"isPaid\": false\n          },\n          {\n            \"amountDue\": \"string\",\n            \"dueDate\": \"string\",\n            \"isPaid\": false\n          }\n        ],\n        \"merchantCategoryCode\": \"string\",\n        \"planCurrency\": \"AUD\",\n        \"planCharge\": \"string\",\n        \"planRate\": \"string\"\n      },\n      {\n        \"accountId\": \"<string>\",\n        \"amount\": \"string\",\n        \"creationDate\": \"string\",\n        \"duration\": \"string\",\n        \"instalmentInterval\": \"string\",\n        \"merchantName\": \"string\",\n        \"planId\": \"string\",\n        \"planNickname\": \"string\",\n        \"planReference\": \"string\",\n        \"schedule\": [\n          {\n            \"amountDue\": \"string\",\n            \"dueDate\": \"string\",\n            \"isPaid\": false\n          },\n          {\n            \"amountDue\": \"string\",\n            \"dueDate\": \"string\",\n            \"isPaid\": false\n          }\n        ],\n        \"merchantCategoryCode\": \"string\",\n        \"planCurrency\": \"AUD\",\n        \"planCharge\": \"string\",\n        \"planRate\": \"string\"\n      }\n    ]\n  },\n  \"links\": {\n    \"self\": \"string\",\n    \"first\": \"string\",\n    \"prev\": \"string\",\n    \"next\": \"string\",\n    \"last\": \"string\"\n  },\n  \"meta\": {\n    \"totalPages\": 4150,\n    \"totalRecords\": 3940\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b1114151-0e20-4536-a4ca-93a622e8fedc",
+              "name": "The following error codes **MUST** be supported:<br/><ul class=\"error-code-list\"><li>[400 - Invalid Field](#error-400-field-invalid)</li><li>[400 - Missing Required Field](#error-400-field-missing)</li><li>[400 - Missing Required Header](#error-400-header-missing)</li><li>[400 - Invalid Version](#error-400-header-invalid-version)</li><li>[400 - Invalid Page Size](#error-400-field-invalid-page-size)</li></ul>",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "banking",
+                    "accounts",
+                    "payments",
+                    "plans"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "plan-status",
+                      "value": "ACTIVE"
+                    },
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "page-size",
+                      "value": "25"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Version of the API endpoint requested by the client. Must be set to a positive integer. The endpoint should respond with the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers). If the value of [_x-min-v_](#request-headers) is equal to or higher than the value of [_x-v_](#request-headers) then the [_x-min-v_](#request-headers) header should be treated as absent. If all versions requested are not supported then the endpoint **MUST** respond with a `406 Not Acceptable`. See [HTTP Headers](#request-headers).",
+                    "key": "x-v",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The endpoint should respond with the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers). If all versions requested are not supported then the endpoint **MUST** respond with a `406 Not Acceptable`.",
+                    "key": "x-min-v",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder **MUST** play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
+                    "key": "x-fapi-interaction-id",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The time when the customer last logged in to the Data Recipient Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**. Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.",
+                    "key": "x-fapi-auth-date",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The customer's original IP address if the customer is currently logged in to the Data Recipient Software Product. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.",
+                    "key": "x-fapi-customer-ip-address",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User-Agent header, if the customer is currently logged in to the Data Recipient Software Product. Mandatory for customer present calls. Not required for unattended or unauthenticated calls.",
+                    "key": "x-cds-client-headers",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "disabled": false,
+                  "description": "(Required) An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder **MUST** play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
+                  "key": "x-fapi-interaction-id",
+                  "value": "string"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"code\": \"string\",\n      \"detail\": \"string\",\n      \"title\": \"string\",\n      \"meta\": {\n        \"urn\": \"string\"\n      }\n    },\n    {\n      \"code\": \"string\",\n      \"detail\": \"string\",\n      \"title\": \"string\",\n      \"meta\": {\n        \"urn\": \"string\"\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c7295330-5067-497b-a20d-d93e2878c614",
+              "name": "The following error codes **MUST** be supported:<br/><ul class=\"error-code-list\"><li>[406 - Unsupported Version](#error-406-header-unsupported-version)</li></ul>",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "banking",
+                    "accounts",
+                    "payments",
+                    "plans"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "plan-status",
+                      "value": "ACTIVE"
+                    },
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "page-size",
+                      "value": "25"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Version of the API endpoint requested by the client. Must be set to a positive integer. The endpoint should respond with the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers). If the value of [_x-min-v_](#request-headers) is equal to or higher than the value of [_x-v_](#request-headers) then the [_x-min-v_](#request-headers) header should be treated as absent. If all versions requested are not supported then the endpoint **MUST** respond with a `406 Not Acceptable`. See [HTTP Headers](#request-headers).",
+                    "key": "x-v",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The endpoint should respond with the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers). If all versions requested are not supported then the endpoint **MUST** respond with a `406 Not Acceptable`.",
+                    "key": "x-min-v",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder **MUST** play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
+                    "key": "x-fapi-interaction-id",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The time when the customer last logged in to the Data Recipient Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**. Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.",
+                    "key": "x-fapi-auth-date",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The customer's original IP address if the customer is currently logged in to the Data Recipient Software Product. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.",
+                    "key": "x-fapi-customer-ip-address",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User-Agent header, if the customer is currently logged in to the Data Recipient Software Product. Mandatory for customer present calls. Not required for unattended or unauthenticated calls.",
+                    "key": "x-cds-client-headers",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Acceptable",
+              "code": 406,
+              "header": [
+                {
+                  "disabled": false,
+                  "description": "(Required) An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder **MUST** play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
+                  "key": "x-fapi-interaction-id",
+                  "value": "string"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"code\": \"string\",\n      \"detail\": \"string\",\n      \"title\": \"string\",\n      \"meta\": {\n        \"urn\": \"string\"\n      }\n    },\n    {\n      \"code\": \"string\",\n      \"detail\": \"string\",\n      \"title\": \"string\",\n      \"meta\": {\n        \"urn\": \"string\"\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "0e9ae1e2-0daf-4e9c-876b-b2bef001ccf9",
+              "name": "The following error codes **MUST** be supported:<br/><ul class=\"error-code-list\"><li>[422 - Invalid Page](#error-422-field-invalid-page)</li></ul>",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "banking",
+                    "accounts",
+                    "payments",
+                    "plans"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "plan-status",
+                      "value": "ACTIVE"
+                    },
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "page-size",
+                      "value": "25"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Version of the API endpoint requested by the client. Must be set to a positive integer. The endpoint should respond with the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers). If the value of [_x-min-v_](#request-headers) is equal to or higher than the value of [_x-v_](#request-headers) then the [_x-min-v_](#request-headers) header should be treated as absent. If all versions requested are not supported then the endpoint **MUST** respond with a `406 Not Acceptable`. See [HTTP Headers](#request-headers).",
+                    "key": "x-v",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Minimum version of the API endpoint requested by the client. Must be set to a positive integer if provided. The endpoint should respond with the highest supported version between [_x-min-v_](#request-headers) and [_x-v_](#request-headers). If all versions requested are not supported then the endpoint **MUST** respond with a `406 Not Acceptable`.",
+                    "key": "x-min-v",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder **MUST** play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
+                    "key": "x-fapi-interaction-id",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The time when the customer last logged in to the Data Recipient Software Product as described in **[[FAPI-1.0-Baseline]](#nref-FAPI-1-0-Baseline)**. Required for all resource calls (customer present and unattended). Not required for unauthenticated calls.",
+                    "key": "x-fapi-auth-date",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The customer's original IP address if the customer is currently logged in to the Data Recipient Software Product. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.",
+                    "key": "x-fapi-customer-ip-address",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User-Agent header, if the customer is currently logged in to the Data Recipient Software Product. Mandatory for customer present calls. Not required for unattended or unauthenticated calls.",
+                    "key": "x-cds-client-headers",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "disabled": false,
+                  "description": "(Required) An **[[RFC4122]](#nref-RFC4122)** UUID used as a correlation id. If provided, the data holder **MUST** play back this value in the _x-fapi-interaction-id_ response header. If not provided a **[[RFC4122]](#nref-RFC4122)** UUID value is required to be provided in the response header to track the interaction.",
+                  "key": "x-fapi-interaction-id",
+                  "value": "string"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"code\": \"string\",\n      \"detail\": \"string\",\n      \"title\": \"string\",\n      \"meta\": {\n        \"urn\": \"string\"\n      }\n    },\n    {\n      \"code\": \"string\",\n      \"detail\": \"string\",\n      \"title\": \"string\",\n      \"meta\": {\n        \"urn\": \"string\"\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://mtls.dh.example.com/cds-au/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "3a59c5b3-0086-4b46-a8e2-ab07a68347ab",
+    "name": "CDR Banking Banking Account Balances Banking Account Scheduled Payments API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Specifications for resource endpoints applicable to data holders in the Banking sector.\n\nContact Support:\n Name: Data Standards Body\n Email: contact@dsb.gov.au",
+      "type": "text/plain"
+    }
+  }
+}
