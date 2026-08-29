@@ -242,6 +242,9 @@ apis:
     url: >-
       https://consumerdatastandardsaustralia.github.io/standards/#cdr-banking-api_banking_get-payees
 common:
+- type: CapabilityMap
+  url: capabilities/judo-bank-capability-edges.yml
+  name: Judo Bank Business Capability Map
 - type: AgenticAccess
   url: agentic-access/judo-bank-agentic-access.yml
 - type: Authentication
