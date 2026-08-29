@@ -15,6 +15,17 @@ description: Judo Bank (Judo Capital Holdings Ltd) is an Australian challenger b
   Body (DSB) Consumer Data Standards, while authenticated consumer-data sharing is
   governed by the accredited data recipient (ADR) model rather than an open self-serve
   developer program.
+deliveryModel:
+  model: unknown
+  open_source: false
+  commercial: false
+  callable_host: false
+  label: Delivery model not determined — needs a product licence on record
+  confidence: low
+  source:
+  - openapi
+  generated: '2026-08-28'
+  method: derived
 accessModel:
   pricing: unknown
   onboarding: self-serve
