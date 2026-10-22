@@ -1,0 +1,12 @@
+generated: '2026-10-21'
+method: none
+source: https://api.github.com/orgs/judobank
+packages: []
+checked:
+- https://registry.npmjs.org/-/v1/search?text=judo%20bank (no Judo Bank package; results were other banks)
+- https://pypi.org/pypi/judo-bank/json (404)
+- https://api.github.com/orgs/judobank (org "Judo Bank", blog https://www.judo.bank/, 0 public repos)
+note: >-
+  No first-party SDK, CLI or client library found. Judo Bank's CDR APIs are
+  consumed through the DSB Consumer Data Standards contracts; integrators use
+  generic CDR tooling, not a Judo package.

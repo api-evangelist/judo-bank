@@ -1,11 +1,11 @@
 ---
-name: Look up Judo Bank product reference data
+name: judo-bank-product-lookup
 description: >-
   Retrieve Judo Bank's publicly available banking products and their full detail
   from the CDR Product Reference Data API - no authentication required. Use to
   browse product categories (residential mortgages, term deposits, business loans)
   and read fees, rates, features, constraints and eligibility for a product.
-api: openapi/judo-bank-cds-banking-products-openapi.yml
+api: openapi/judo-bank-banking-products-api-openapi.yml
 operations: [listBankingProducts, getBankingProductDetail]
 ---
 

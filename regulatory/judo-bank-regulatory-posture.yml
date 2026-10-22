@@ -1,0 +1,83 @@
+generated: '2026-10-21'
+method: searched
+source: https://www.judo.bank/privacy-policy/
+jurisdiction: Australia (Privacy Act 1988 / Australian Privacy Principles); Judo Bank Pty Ltd ABN 11 615 995 581,
+  Australian Credit Licence & AFSL 501091
+policy_version: This version of this policy applies from 24 June 2026.
+fetch_note: Plain browser-UA curl returns 403 on 2026-10-21; the page was read with the headless-browser renderer
+  (status 200).
+signals:
+  data_subject_request:
+    url: https://www.judo.bank/privacy-policy/
+    section: 8. How can you access and correct your personal and credit information?
+    channel: customers@judo.bank / 13JUDO (13 58 36)
+    rights_named:
+    - access
+    - correction
+    escalation: Office of the Australian Information Commissioner (www.oaic.gov.au) named for privacy information
+    evidence:
+    - source: https://www.judo.bank/privacy-policy/
+      http_status: 200
+      fetched: '2026-10-21'
+      quote: You have the right to seek access to your personal information held by Judo and to request correction
+        of the information.
+    - source: https://www.judo.bank/privacy-policy/
+      http_status: 200
+      fetched: '2026-10-21'
+      quote: There are no fees associated with making a request to access or correct your information. However,
+        we may charge a fee where lawful and reasonable, for processing an access request, to account for locating
+        the information and supplying it to you.
+    note: Access and correction rights under the Australian Privacy Principles, by email or phone, with identity
+      verification; no deletion or portability right is named.
+  ai_transparency:
+    url: https://www.judo.bank/privacy-policy/
+    section: 4.7 Automated decision-making
+    evidence:
+    - source: https://www.judo.bank/privacy-policy/
+      http_status: 200
+      fetched: '2026-10-21'
+      quote: 'We may use artificial intelligence (AI) for a range of purposes, including:'
+    - source: https://www.judo.bank/privacy-policy/
+      http_status: 200
+      fetched: '2026-10-21'
+      quote: Where Judo uses AI, decisions will be supported by human review.
+    note: Discloses AI use (process automation, fraud/scam monitoring, insights, knowledge management, and training
+      AI models for credit and risk assessment decisioning) and commits to human review of AI-supported decisions.
+  data_residency:
+    url: https://www.judo.bank/privacy-policy/
+    section: 5.3 Overseas disclosure
+    evidence:
+    - source: https://www.judo.bank/privacy-policy/
+      http_status: 200
+      fetched: '2026-10-21'
+      quote: Judo generally stores and processes personal information in Australia. However, in limited circumstances,
+        Judo may disclose or allow access to personal information by overseas recipients, including through the
+        use of cloud-based systems.
+    note: Australia is the default location; overseas access via cloud service providers is permitted, with APP-consistency
+      steps. No named countries or contractual residency guarantee.
+  data_retention:
+    url: https://www.judo.bank/privacy-policy/
+    section: 7. How do we hold and protect your personal information?
+    evidence:
+    - source: https://www.judo.bank/privacy-policy/
+      http_status: 200
+      fetched: '2026-10-21'
+      quote: We will only retain your personal information for as long as it is reasonably necessary, including
+        to provide products and services and manage our relationship with you.
+    - source: https://www.judo.bank/privacy-policy/
+      http_status: 200
+      fetched: '2026-10-21'
+      quote: When personal information is no longer required, and we are not legally required to retain it, we will
+        take reasonable steps to securely delete, destroy or de-identify the information.
+    note: Purpose-bound retention with secure deletion/de-identification; no fixed retention periods are stated.
+  incident_notification:
+    url: https://www.judo.bank/privacy-policy/
+    section: 5.2 Disclosure to others (also 4.4 Compliance with our legal and/or regulatory obligations)
+    evidence:
+    - source: https://www.judo.bank/privacy-policy/
+      http_status: 200
+      fetched: '2026-10-21'
+      quote: any entity where it is necessary or appropriate to prevent or reduce the risk of harm to individuals
+        in the event of an eligible data breach.
+    note: Only references eligible data breaches (the Australian Notifiable Data Breaches scheme term) as a ground
+      for disclosure and safeguards; the policy states no notification timeline or commitment to customers.

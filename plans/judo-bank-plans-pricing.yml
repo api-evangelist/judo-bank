@@ -1,0 +1,17 @@
+name: Judo Bank pricing
+generated: '2026-10-21'
+method: none
+source: https://consumerdatastandardsaustralia.github.io/standards/
+audience: unclear
+pricing_basis: none
+published: false
+plan_count: 0
+plans: []
+delivery:
+  model: managed
+note: >-
+  No API pricing published. The public Product Reference Data API is open and
+  unauthenticated by regulation (CDR), and authenticated data sharing goes to
+  accredited data recipients under the CDR regime, with no commercial API
+  plans. Judo's product rates (loans, term deposits) are consumer/business
+  banking fees, not API pricing. www.judo.bank returned a 403 bot challenge.

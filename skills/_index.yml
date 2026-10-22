@@ -1,10 +1,18 @@
-generated: '2026-07-20'
+name: Judo Bank agent skills
+generated: '2026-10-21'
 method: generated
 source: >-
-  Generated from openapi/judo-bank-cds-banking-products-openapi.yml public
-  operations + conventions/ + errors/. Grounded in verified operationIds.
+  Generated from operationIds in openapi/judo-bank-banking-*-openapi.yml plus
+  conventions/, errors/ and authentication/. No provider-published skills or
+  AGENTS.md found (web search 2026-10-21).
 skills:
 - file: judo-bank-product-lookup.md
-  name: Look up Judo Bank product reference data
-  api: openapi/judo-bank-cds-banking-products-openapi.yml
+  name: judo-bank-product-lookup
+  api: openapi/judo-bank-banking-products-api-openapi.yml
   operations: [listBankingProducts, getBankingProductDetail]
+  access: public
+- file: judo-bank-account-data-sharing.md
+  name: judo-bank-account-data-sharing
+  api: openapi/judo-bank-banking-accounts-api-openapi.yml
+  operations: [listBankingAccounts, getBankingAccountDetail, getBankingBalance, listBankingBalancesBulk, listBankingTransactions, getBankingTransactionDetail]
+  access: cdr-accredited-data-recipient

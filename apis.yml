@@ -1,20 +1,20 @@
 aid: judo-bank
+
 url: https://raw.githubusercontent.com/api-evangelist/judo-bank/refs/heads/main/apis.yml
+
 name: Judo Bank
+
 kind: company
-description: Judo Bank (Judo Capital Holdings Ltd) is an Australian challenger bank
-  founded in 2016 and headquartered in Melbourne, purpose-built to serve small and
-  medium-sized enterprises (SMEs) with relationship-led business lending alongside
-  personal and business term deposits. It was the first new domestically-owned bank
-  in decades to be granted a full, unrestricted authorised deposit-taking institution
-  (ADI) licence by APRA, in April 2019, and has been publicly listed on the Australian
-  Securities Exchange (ticker ASX JDO) since November 2021 - it is a for-profit, shareholder-owned
-  bank, not a customer-owned mutual. As a designated ADI and data holder under Australia's
-  Consumer Data Right (CDR / Open Banking) regime, Judo Bank exposes a public,
-  unauthenticated Product Reference Data (PRD) API conforming to the Data Standards
-  Body (DSB) Consumer Data Standards, while authenticated consumer-data sharing is
-  governed by the accredited data recipient (ADR) model rather than an open self-serve
+
+description: Judo Bank (Judo Capital Holdings Ltd) is an Australian challenger bank founded in 2016 and headquartered in Melbourne, purpose-built
+  to serve small and medium-sized enterprises (SMEs) with relationship-led business lending alongside personal and business term deposits. It
+  was the first new domestically-owned bank in decades to be granted a full, unrestricted authorised deposit-taking institution (ADI) licence
+  by APRA, in April 2019, and has been publicly listed on the Australian Securities Exchange (ticker ASX JDO) since November 2021 - it is a for-profit,
+  shareholder-owned bank, not a customer-owned mutual. As a designated ADI and data holder under Australia's Consumer Data Right (CDR / Open Banking)
+  regime, Judo Bank exposes a public, unauthenticated Product Reference Data (PRD) API conforming to the Data Standards Body (DSB) Consumer Data
+  Standards, while authenticated consumer-data sharing is governed by the accredited data recipient (ADR) model rather than an open self-serve
   developer program.
+
 deliveryModel:
   model: unknown
   open_source: false
@@ -26,6 +26,7 @@ deliveryModel:
   - openapi
   generated: '2026-08-28'
   method: derived
+
 accessModel:
   pricing: unknown
   onboarding: self-serve
@@ -38,7 +39,9 @@ accessModel:
   - authentication
   generated: '2026-07-22'
   method: derived
+
 image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/judo-bank.png
+
 tags:
 - Finance
 - Banks
@@ -48,6 +51,7 @@ tags:
 - Australia
 - SME Lending
 - Product Reference Data
+
 tags_raw:
 - Financial
 - Banks
@@ -57,200 +61,36 @@ tags_raw:
 - Australia
 - SME Lending
 - Product Reference Data
+
 created: '2026-07-20'
-modified: '2026-10-06'
+
+modified: '2026-10-21'
+
 specificationVersion: '0.23'
-apis:
-- aid: judo-bank:judo-bank-banking-account-balances-api
-  name: Judo Bank Banking Account Balances API
-  description: Banking Account Balance endpoints
-  humanURL: https://www.judo.bank/open-banking/
-  baseURL: https://public.open.judo.bank/cds-au/v1/banking/products
-  tags:
-  - Banking Account Balances
-  properties:
-  - type: OpenAPI
-    url: openapi/judo-bank-banking-account-balances-api-openapi.yml
-  - type: Documentation
-    url: https://consumerdatastandardsaustralia.github.io/standards/
-  - type: APIReference
-    url: >-
-      https://consumerdatastandardsaustralia.github.io/standards/#cdr-banking-api_banking_get-products
-  - type: APIReference
-    url: >-
-      https://consumerdatastandardsaustralia.github.io/standards/#cdr-banking-api_banking_get-accounts
-  - type: APIReference
-    url: >-
-      https://consumerdatastandardsaustralia.github.io/standards/#cdr-banking-api_banking_get-transactions-for-account
-  - type: APIReference
-    url: >-
-      https://consumerdatastandardsaustralia.github.io/standards/#cdr-banking-api_banking_get-direct-debits-for-account
-  - type: APIReference
-    url: >-
-      https://consumerdatastandardsaustralia.github.io/standards/#cdr-banking-api_banking_get-payees
-- aid: judo-bank:judo-bank-banking-account-direct-debits-api
-  name: Judo Bank Banking Account Direct Debits API
-  description: Banking Account Direct Debit endpoints
-  humanURL: https://www.judo.bank/open-banking/
-  baseURL: https://public.open.judo.bank/cds-au/v1/banking/products
-  tags:
-  - Banking Account Direct Debits
-  properties:
-  - type: OpenAPI
-    url: openapi/judo-bank-banking-account-direct-debits-api-openapi.yml
-  - type: Documentation
-    url: https://consumerdatastandardsaustralia.github.io/standards/
-  - type: APIReference
-    url: >-
-      https://consumerdatastandardsaustralia.github.io/standards/#cdr-banking-api_banking_get-products
-  - type: APIReference
-    url: >-
-      https://consumerdatastandardsaustralia.github.io/standards/#cdr-banking-api_banking_get-accounts
-  - type: APIReference
-    url: >-
-      https://consumerdatastandardsaustralia.github.io/standards/#cdr-banking-api_banking_get-transactions-for-account
-  - type: APIReference
-    url: >-
-      https://consumerdatastandardsaustralia.github.io/standards/#cdr-banking-api_banking_get-direct-debits-for-account
-  - type: APIReference
-    url: >-
-      https://consumerdatastandardsaustralia.github.io/standards/#cdr-banking-api_banking_get-payees
-- aid: judo-bank:judo-bank-banking-account-scheduled-payments-api
-  name: Judo Bank Banking Account Scheduled Payments API
-  description: Banking Account Scheduled Payment endpoints
-  humanURL: https://www.judo.bank/open-banking/
-  baseURL: https://public.open.judo.bank/cds-au/v1/banking/products
-  tags:
-  - Banking Account Scheduled Payments
-  properties:
-  - type: OpenAPI
-    url: openapi/judo-bank-banking-account-scheduled-payments-api-openapi.yml
-  - type: Documentation
-    url: https://consumerdatastandardsaustralia.github.io/standards/
-  - type: APIReference
-    url: >-
-      https://consumerdatastandardsaustralia.github.io/standards/#cdr-banking-api_banking_get-products
-  - type: APIReference
-    url: >-
-      https://consumerdatastandardsaustralia.github.io/standards/#cdr-banking-api_banking_get-accounts
-  - type: APIReference
-    url: >-
-      https://consumerdatastandardsaustralia.github.io/standards/#cdr-banking-api_banking_get-transactions-for-account
-  - type: APIReference
-    url: >-
-      https://consumerdatastandardsaustralia.github.io/standards/#cdr-banking-api_banking_get-direct-debits-for-account
-  - type: APIReference
-    url: >-
-      https://consumerdatastandardsaustralia.github.io/standards/#cdr-banking-api_banking_get-payees
-- aid: judo-bank:judo-bank-banking-account-transactions-api
-  name: Judo Bank Banking Account Transactions API
-  description: Banking Account Transaction endpoints
-  humanURL: https://www.judo.bank/open-banking/
-  baseURL: https://public.open.judo.bank/cds-au/v1/banking/products
-  tags:
-  - Banking Account Transactions
-  properties:
-  - type: OpenAPI
-    url: openapi/judo-bank-banking-account-transactions-api-openapi.yml
-  - type: Documentation
-    url: https://consumerdatastandardsaustralia.github.io/standards/
-  - type: APIReference
-    url: >-
-      https://consumerdatastandardsaustralia.github.io/standards/#cdr-banking-api_banking_get-products
-  - type: APIReference
-    url: >-
-      https://consumerdatastandardsaustralia.github.io/standards/#cdr-banking-api_banking_get-accounts
-  - type: APIReference
-    url: >-
-      https://consumerdatastandardsaustralia.github.io/standards/#cdr-banking-api_banking_get-transactions-for-account
-  - type: APIReference
-    url: >-
-      https://consumerdatastandardsaustralia.github.io/standards/#cdr-banking-api_banking_get-direct-debits-for-account
-  - type: APIReference
-    url: >-
-      https://consumerdatastandardsaustralia.github.io/standards/#cdr-banking-api_banking_get-payees
-- aid: judo-bank:judo-bank-banking-accounts-api
-  name: Judo Bank Banking Accounts API
-  description: Banking Account endpoints
-  humanURL: https://www.judo.bank/open-banking/
-  baseURL: https://public.open.judo.bank/cds-au/v1/banking/products
-  tags:
-  - Banking Accounts
-  properties:
-  - type: OpenAPI
-    url: openapi/judo-bank-banking-accounts-api-openapi.yml
-  - type: Documentation
-    url: https://consumerdatastandardsaustralia.github.io/standards/
-  - type: APIReference
-    url: >-
-      https://consumerdatastandardsaustralia.github.io/standards/#cdr-banking-api_banking_get-products
-  - type: APIReference
-    url: >-
-      https://consumerdatastandardsaustralia.github.io/standards/#cdr-banking-api_banking_get-accounts
-  - type: APIReference
-    url: >-
-      https://consumerdatastandardsaustralia.github.io/standards/#cdr-banking-api_banking_get-transactions-for-account
-  - type: APIReference
-    url: >-
-      https://consumerdatastandardsaustralia.github.io/standards/#cdr-banking-api_banking_get-direct-debits-for-account
-  - type: APIReference
-    url: >-
-      https://consumerdatastandardsaustralia.github.io/standards/#cdr-banking-api_banking_get-payees
-- aid: judo-bank:judo-bank-banking-payees-api
-  name: Judo Bank Banking Payees API
-  description: Banking Payee endpoints
-  humanURL: https://www.judo.bank/open-banking/
-  baseURL: https://public.open.judo.bank/cds-au/v1/banking/products
-  tags:
-  - Banking Payees
-  properties:
-  - type: OpenAPI
-    url: openapi/judo-bank-banking-payees-api-openapi.yml
-  - type: Documentation
-    url: https://consumerdatastandardsaustralia.github.io/standards/
-  - type: APIReference
-    url: >-
-      https://consumerdatastandardsaustralia.github.io/standards/#cdr-banking-api_banking_get-products
-  - type: APIReference
-    url: >-
-      https://consumerdatastandardsaustralia.github.io/standards/#cdr-banking-api_banking_get-accounts
-  - type: APIReference
-    url: >-
-      https://consumerdatastandardsaustralia.github.io/standards/#cdr-banking-api_banking_get-transactions-for-account
-  - type: APIReference
-    url: >-
-      https://consumerdatastandardsaustralia.github.io/standards/#cdr-banking-api_banking_get-direct-debits-for-account
-  - type: APIReference
-    url: >-
-      https://consumerdatastandardsaustralia.github.io/standards/#cdr-banking-api_banking_get-payees
-- aid: judo-bank:judo-bank-banking-products-api
-  name: Judo Bank Banking Products API
-  description: Banking Product endpoints
-  humanURL: https://www.judo.bank/open-banking/
-  baseURL: https://public.open.judo.bank/cds-au/v1/banking/products
-  tags:
-  - Banking Products
-  properties:
-  - type: OpenAPI
-    url: openapi/judo-bank-banking-products-api-openapi.yml
-  - type: Documentation
-    url: https://consumerdatastandardsaustralia.github.io/standards/
-  - type: APIReference
-    url: >-
-      https://consumerdatastandardsaustralia.github.io/standards/#cdr-banking-api_banking_get-products
-  - type: APIReference
-    url: >-
-      https://consumerdatastandardsaustralia.github.io/standards/#cdr-banking-api_banking_get-accounts
-  - type: APIReference
-    url: >-
-      https://consumerdatastandardsaustralia.github.io/standards/#cdr-banking-api_banking_get-transactions-for-account
-  - type: APIReference
-    url: >-
-      https://consumerdatastandardsaustralia.github.io/standards/#cdr-banking-api_banking_get-direct-debits-for-account
-  - type: APIReference
-    url: >-
-      https://consumerdatastandardsaustralia.github.io/standards/#cdr-banking-api_banking_get-payees
+
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com
+
 common:
+- type: Deprecation
+  url: https://consumerdatastandardsaustralia.github.io/standards/maintenance.html
+- type: RateLimits
+  url: rate-limits/judo-bank-rate-limits.yml
+- type: Spectral
+  url: rules/judo-bank-rules.yml
+- type: JSONLD
+  url: json-ld/judo-bank-context.jsonld
+- type: Vocabulary
+  url: vocabulary/judo-bank-vocabulary.yml
+- type: Overlay
+  url: overlays/judo-bank-banking-account-balances-api-overlay.yaml
+- type: Hosts
+  url: hosts/judo-bank-hosts.yml
+- type: IntegrationEdges
+  url: integrations/judo-bank-integration-edges.yml
+- type: Vendors
+  url: vendors/judo-bank-vendors.yml
 - url: https://www.judo.bank/feed/
   type: BlogRSS
 - type: CapabilityMap
@@ -274,9 +114,9 @@ common:
   url: data-model/judo-bank-data-model.yml
 - type: X-MCPServerCandidate
   url: mcp/judo-bank-mcp.yml
-  note: 'Renamed from MCPServer 2026-09-03 (roadmap#247): the manifest self-describes as status: candidate — a tool list derived from the published API contracts, not an existing server. The scorer already read the manifest and reported mcp_server correctly; the MCPServer type was crediting the artifact-type surfaces with a server that does not exist.'
-- type: Overlay
-  url: overlays/judo-bank-cds-banking-products-overlay.yaml
+  note: 'Renamed from MCPServer 2026-09-03 (roadmap#247): the manifest self-describes as status: candidate — a tool list derived from the published
+    API contracts, not an existing server. The scorer already read the manifest and reported mcp_server correctly; the MCPServer type was crediting
+    the artifact-type surfaces with a server that does not exist.'
 - type: AgentSkill
   url: skills/judo-bank-product-lookup.md
 - type: WellKnown
@@ -293,6 +133,218 @@ common:
   url: https://github.com/judobank
 - type: LinkedIn
   url: https://www.linkedin.com/company/judobank
-maintainers:
-- FN: Kin Lane
-  email: kin@apievangelist.com
+
+apis:
+- aid: judo-bank:judo-bank-banking-account-balances-api
+  name: Judo Bank Banking Account Balances API
+  description: Banking Account Balance endpoints (authenticated CDR resource API; Judo Bank serves it on an mTLS data-holder host that is not
+    published publicly - the DSB contract templates it as https://mtls.dh.example.com/cds-au/v1 - so no baseURL is recorded)
+  humanURL: https://www.judo.bank/open-banking/
+  tags:
+  - Banking Account Balances
+  properties:
+  - type: OpenAPI
+    url: openapi/judo-bank-banking-account-balances-api-openapi.yml
+  - type: Documentation
+    url: https://consumerdatastandardsaustralia.github.io/standards/
+  - type: APIReference
+    url: https://consumerdatastandardsaustralia.github.io/standards/#cdr-banking-api_banking_get-products
+  - type: APIReference
+    url: https://consumerdatastandardsaustralia.github.io/standards/#cdr-banking-api_banking_get-accounts
+  - type: APIReference
+    url: https://consumerdatastandardsaustralia.github.io/standards/#cdr-banking-api_banking_get-transactions-for-account
+  - type: APIReference
+    url: https://consumerdatastandardsaustralia.github.io/standards/#cdr-banking-api_banking_get-direct-debits-for-account
+  - type: APIReference
+    url: https://consumerdatastandardsaustralia.github.io/standards/#cdr-banking-api_banking_get-payees
+  - type: JSONSchema
+    url: json-schema/judo-bank-response-banking-accounts-balance-list-schema.json
+  - type: JSONSchema
+    url: json-schema/judo-bank-response-banking-accounts-balance-by-id-schema.json
+- aid: judo-bank:judo-bank-banking-account-direct-debits-api
+  name: Judo Bank Banking Account Direct Debits API
+  description: Banking Account Direct Debit endpoints (authenticated CDR resource API; Judo Bank serves it on an mTLS data-holder host that is
+    not published publicly - the DSB contract templates it as https://mtls.dh.example.com/cds-au/v1 - so no baseURL is recorded)
+  humanURL: https://www.judo.bank/open-banking/
+  tags:
+  - Banking Account Direct Debits
+  properties:
+  - type: OpenAPI
+    url: openapi/judo-bank-banking-account-direct-debits-api-openapi.yml
+  - type: Documentation
+    url: https://consumerdatastandardsaustralia.github.io/standards/
+  - type: APIReference
+    url: https://consumerdatastandardsaustralia.github.io/standards/#cdr-banking-api_banking_get-products
+  - type: APIReference
+    url: https://consumerdatastandardsaustralia.github.io/standards/#cdr-banking-api_banking_get-accounts
+  - type: APIReference
+    url: https://consumerdatastandardsaustralia.github.io/standards/#cdr-banking-api_banking_get-transactions-for-account
+  - type: APIReference
+    url: https://consumerdatastandardsaustralia.github.io/standards/#cdr-banking-api_banking_get-direct-debits-for-account
+  - type: APIReference
+    url: https://consumerdatastandardsaustralia.github.io/standards/#cdr-banking-api_banking_get-payees
+  - type: JSONSchema
+    url: json-schema/judo-bank-response-banking-direct-debit-authorisation-list-schema.json
+- aid: judo-bank:judo-bank-banking-account-scheduled-payments-api
+  name: Judo Bank Banking Account Scheduled Payments API
+  description: Banking Account Scheduled Payment endpoints (authenticated CDR resource API; Judo Bank serves it on an mTLS data-holder host that
+    is not published publicly - the DSB contract templates it as https://mtls.dh.example.com/cds-au/v1 - so no baseURL is recorded)
+  humanURL: https://www.judo.bank/open-banking/
+  tags:
+  - Banking Account Scheduled Payments
+  properties:
+  - type: OpenAPI
+    url: openapi/judo-bank-banking-account-scheduled-payments-api-openapi.yml
+  - type: Documentation
+    url: https://consumerdatastandardsaustralia.github.io/standards/
+  - type: APIReference
+    url: https://consumerdatastandardsaustralia.github.io/standards/#cdr-banking-api_banking_get-products
+  - type: APIReference
+    url: https://consumerdatastandardsaustralia.github.io/standards/#cdr-banking-api_banking_get-accounts
+  - type: APIReference
+    url: https://consumerdatastandardsaustralia.github.io/standards/#cdr-banking-api_banking_get-transactions-for-account
+  - type: APIReference
+    url: https://consumerdatastandardsaustralia.github.io/standards/#cdr-banking-api_banking_get-direct-debits-for-account
+  - type: APIReference
+    url: https://consumerdatastandardsaustralia.github.io/standards/#cdr-banking-api_banking_get-payees
+  - type: JSONSchema
+    url: json-schema/judo-bank-response-banking-scheduled-payments-list-v2-schema.json
+  - type: JSONSchema
+    url: json-schema/judo-bank-response-banking-instalment-plan-list-schema.json
+- aid: judo-bank:judo-bank-banking-account-transactions-api
+  name: Judo Bank Banking Account Transactions API
+  description: Banking Account Transaction endpoints (authenticated CDR resource API; Judo Bank serves it on an mTLS data-holder host that is
+    not published publicly - the DSB contract templates it as https://mtls.dh.example.com/cds-au/v1 - so no baseURL is recorded)
+  humanURL: https://www.judo.bank/open-banking/
+  tags:
+  - Banking Account Transactions
+  properties:
+  - type: OpenAPI
+    url: openapi/judo-bank-banking-account-transactions-api-openapi.yml
+  - type: Documentation
+    url: https://consumerdatastandardsaustralia.github.io/standards/
+  - type: APIReference
+    url: https://consumerdatastandardsaustralia.github.io/standards/#cdr-banking-api_banking_get-products
+  - type: APIReference
+    url: https://consumerdatastandardsaustralia.github.io/standards/#cdr-banking-api_banking_get-accounts
+  - type: APIReference
+    url: https://consumerdatastandardsaustralia.github.io/standards/#cdr-banking-api_banking_get-transactions-for-account
+  - type: APIReference
+    url: https://consumerdatastandardsaustralia.github.io/standards/#cdr-banking-api_banking_get-direct-debits-for-account
+  - type: APIReference
+    url: https://consumerdatastandardsaustralia.github.io/standards/#cdr-banking-api_banking_get-payees
+  - type: JSONSchema
+    url: json-schema/judo-bank-response-banking-transaction-list-v2-schema.json
+  - type: JSONSchema
+    url: json-schema/judo-bank-response-banking-transaction-by-id-v3-schema.json
+- aid: judo-bank:judo-bank-banking-accounts-api
+  name: Judo Bank Banking Accounts API
+  description: Banking Account endpoints (authenticated CDR resource API; Judo Bank serves it on an mTLS data-holder host that is not published
+    publicly - the DSB contract templates it as https://mtls.dh.example.com/cds-au/v1 - so no baseURL is recorded)
+  humanURL: https://www.judo.bank/open-banking/
+  tags:
+  - Banking Accounts
+  properties:
+  - type: OpenAPI
+    url: openapi/judo-bank-banking-accounts-api-openapi.yml
+  - type: Documentation
+    url: https://consumerdatastandardsaustralia.github.io/standards/
+  - type: APIReference
+    url: https://consumerdatastandardsaustralia.github.io/standards/#cdr-banking-api_banking_get-products
+  - type: APIReference
+    url: https://consumerdatastandardsaustralia.github.io/standards/#cdr-banking-api_banking_get-accounts
+  - type: APIReference
+    url: https://consumerdatastandardsaustralia.github.io/standards/#cdr-banking-api_banking_get-transactions-for-account
+  - type: APIReference
+    url: https://consumerdatastandardsaustralia.github.io/standards/#cdr-banking-api_banking_get-direct-debits-for-account
+  - type: APIReference
+    url: https://consumerdatastandardsaustralia.github.io/standards/#cdr-banking-api_banking_get-payees
+  - type: JSONSchema
+    url: json-schema/judo-bank-response-banking-account-list-v3-schema.json
+  - type: JSONSchema
+    url: json-schema/judo-bank-response-banking-account-by-id-v5-schema.json
+- aid: judo-bank:judo-bank-banking-payees-api
+  name: Judo Bank Banking Payees API
+  description: Banking Payee endpoints (authenticated CDR resource API; Judo Bank serves it on an mTLS data-holder host that is not published
+    publicly - the DSB contract templates it as https://mtls.dh.example.com/cds-au/v1 - so no baseURL is recorded)
+  humanURL: https://www.judo.bank/open-banking/
+  tags:
+  - Banking Payees
+  properties:
+  - type: OpenAPI
+    url: openapi/judo-bank-banking-payees-api-openapi.yml
+  - type: Documentation
+    url: https://consumerdatastandardsaustralia.github.io/standards/
+  - type: APIReference
+    url: https://consumerdatastandardsaustralia.github.io/standards/#cdr-banking-api_banking_get-products
+  - type: APIReference
+    url: https://consumerdatastandardsaustralia.github.io/standards/#cdr-banking-api_banking_get-accounts
+  - type: APIReference
+    url: https://consumerdatastandardsaustralia.github.io/standards/#cdr-banking-api_banking_get-transactions-for-account
+  - type: APIReference
+    url: https://consumerdatastandardsaustralia.github.io/standards/#cdr-banking-api_banking_get-direct-debits-for-account
+  - type: APIReference
+    url: https://consumerdatastandardsaustralia.github.io/standards/#cdr-banking-api_banking_get-payees
+  - type: JSONSchema
+    url: json-schema/judo-bank-response-banking-payee-list-v2-schema.json
+  - type: JSONSchema
+    url: json-schema/judo-bank-response-banking-payee-by-id-v2-schema.json
+- aid: judo-bank:judo-bank-banking-products-api
+  name: Judo Bank Banking Products API
+  description: Banking Product endpoints (CDR Product Reference Data) - public, unauthenticated, served live by Judo Bank at public.open.judo.bank
+    (the publicBaseUri registered for brand "Judo Bank" in the ACCC CDR Register); GET /banking/products returned HTTP 200 JSON with brand "Judo
+    Bank" on 2026-10-21.
+  humanURL: https://www.judo.bank/open-banking/
+  baseURL: https://public.open.judo.bank/cds-au/v1
+  tags:
+  - Banking Products
+  properties:
+  - type: OpenAPI
+    url: openapi/judo-bank-banking-products-api-openapi.yml
+  - type: Documentation
+    url: https://consumerdatastandardsaustralia.github.io/standards/
+  - type: APIReference
+    url: https://consumerdatastandardsaustralia.github.io/standards/#cdr-banking-api_banking_get-products
+  - type: APIReference
+    url: https://consumerdatastandardsaustralia.github.io/standards/#cdr-banking-api_banking_get-accounts
+  - type: APIReference
+    url: https://consumerdatastandardsaustralia.github.io/standards/#cdr-banking-api_banking_get-transactions-for-account
+  - type: APIReference
+    url: https://consumerdatastandardsaustralia.github.io/standards/#cdr-banking-api_banking_get-direct-debits-for-account
+  - type: APIReference
+    url: https://consumerdatastandardsaustralia.github.io/standards/#cdr-banking-api_banking_get-payees
+  - type: JSONSchema
+    url: json-schema/judo-bank-response-banking-product-list-v4-schema.json
+  - type: JSONSchema
+    url: json-schema/judo-bank-response-banking-product-by-id-v7-schema.json
+
+x-coverage:
+  state: blocked
+  reason: bot-challenge
+  detail: www.judo.bank answers a browser User-Agent with HTTP 403 (anti-bot challenge) on every page, so no new link-property pointers could
+    be read from the site. Existing Website, Documentation and PrivacyPolicy pointers are kept (403 is an edge policy, not dead). Identity is
+    confirmed by the site's own RSS feed (channel title "Judo Bank", link https://www.judo.bank/) and the GitHub org judobank (name "Judo Bank",
+    blog https://www.judo.bank/).
+  evidence:
+  - url: https://www.judo.bank/
+    status: 403
+  - url: https://www.judo.bank/open-banking/
+    status: 403
+  - url: https://www.judo.bank/privacy-policy/
+    status: 403
+  - url: https://www.judo.bank/feed/
+    status: 200
+  - url: https://github.com/judobank
+    status: 200
+  - url: https://api.github.com/users/judobank
+    status: 200
+  - url: https://www.linkedin.com/company/judobank
+    status: 200
+  - url: https://consumerdatastandardsaustralia.github.io/standards/
+    status: 200
+x-enrichment:
+  date: '2026-10-21'
+  status: enriched
+  artifacts_added: 40
+  pass: modular-v1
+  engine: identity=anthropic,contract=anthropic,surfaces=anthropic,docs=anthropic,regulatory=anthropic

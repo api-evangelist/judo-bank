@@ -1,0 +1,52 @@
+name: Judo Bank rate limits
+generated: '2026-10-21'
+method: searched
+source: https://consumerdatastandardsaustralia.github.io/standards/
+docs: https://consumerdatastandardsaustralia.github.io/standards/#traffic-thresholds
+description: >-
+  Judo Bank does not publish its own rate-limit page (www.judo.bank answers a
+  browser with a 403 bot challenge). As a CDR data holder it is bound by the
+  Data Standards Body "Traffic Thresholds" non-functional requirements: calls
+  above these thresholds MAY be throttled or rejected by the data holder. These
+  are regulatory floors a data holder must serve, not limits Judo has stated.
+limit_count: 6
+limits:
+- name: Customer Present traffic per customer
+  limit_text: 10 TPS per customer
+  max: 10
+  window: 1 second
+  scope: per-customer
+- name: Customer Present traffic per software product
+  limit_text: 50 TPS per Data Recipient Software Product
+  max: 50
+  window: 1 second
+  scope: per-data-recipient-software-product
+- name: Unattended traffic sessions (low traffic periods)
+  limit_text: 20 sessions per day, per customer, per Data Recipient Software Product
+  max: 20
+  window: 1 day
+  scope: per-customer-per-software-product
+- name: Unattended traffic calls per session
+  limit_text: 100 total calls per session
+  max: 100
+  scope: per-session
+- name: Secure traffic, smallest data-holder tier
+  limit_text: For Data Holders with 0 to 10,000 active authorisations, 150 peak TPS total across all consumers.
+  max: 150
+  window: 1 second
+  scope: per-data-holder
+  note: Tier depends on active authorisations; Judo's count is not published. Tiers rise to 450 peak TPS above 60,000 authorisations.
+- name: Public (unauthenticated PRD) traffic
+  limit_text: 300 TPS total across all consumers (additive to secure traffic).
+  max: 300
+  window: 1 second
+  scope: per-data-holder
+  endpoint: /banking/products
+signaling:
+  status_on_exhaustion: null
+  headers: []
+  note: >-
+    The contracts declare no 429 response and no rate-limit headers. A GET of
+    https://public.open.judo.bank/cds-au/v1/banking/products (x-v 3) on
+    2026-10-21 returned 200 with headers x-v, access-control-allow-headers
+    Range,x-v,x-min-v and no X-RateLimit-*, RateLimit-* or Retry-After.

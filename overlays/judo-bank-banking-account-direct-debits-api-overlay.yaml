@@ -1,0 +1,29 @@
+overlay: 1.0.0
+info:
+  title: API Evangelist enhancements for Judo Bank CDR Banking Banking Account Direct Debits API
+  version: 1.0.0
+extends: openapi/judo-bank-banking-account-direct-debits-api-openapi.yml
+x-generated: '2026-10-21'
+x-method: generated
+actions:
+- target: $.info
+  update:
+    x-apievangelist-provider: judo-bank
+    x-apievangelist-standard: DSB Consumer Data Standards (CDS) Banking API 1.36.0
+    x-apievangelist-access: 'CDR consumer data: callable only by an accredited data recipient (ADR) via the CDR OAuth2/OIDC
+      + FAPI consent flow and mTLS. Judo Bank does not publish this host; the servers[] entry is the DSB placeholder.'
+- target: $.paths['/banking/accounts/{accountId}/direct-debits'].get
+  update:
+    x-apievangelist-public: false
+    x-apievangelist-agent-safe: true
+    x-apievangelist-requires: ADR accreditation + customer consent (CDR)
+- target: $.paths['/banking/accounts/direct-debits'].get
+  update:
+    x-apievangelist-public: false
+    x-apievangelist-agent-safe: true
+    x-apievangelist-requires: ADR accreditation + customer consent (CDR)
+- target: $.paths['/banking/accounts/direct-debits'].post
+  update:
+    x-apievangelist-public: false
+    x-apievangelist-agent-safe: false
+    x-apievangelist-requires: ADR accreditation + customer consent (CDR)

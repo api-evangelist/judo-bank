@@ -1,0 +1,1224 @@
+{
+  "@context": {
+    "@vocab": "https://judo.bank/schema#",
+    "schema": "https://schema.org/",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "dcterms": "http://purl.org/dc/terms/",
+    "judo": "https://judo.bank/schema#",
+    "MetaPaginated": "judo:MetaPaginated",
+    "totalRecords": {
+      "@id": "judo:totalRecords",
+      "@type": "xsd:integer"
+    },
+    "totalPages": {
+      "@id": "judo:totalPages",
+      "@type": "xsd:integer"
+    },
+    "BankingProductCategoryV2": "judo:BankingProductCategoryV2",
+    "RequestAccountIdListV1": "judo:RequestAccountIdListV1",
+    "data": {
+      "@id": "judo:data",
+      "@type": "@id"
+    },
+    "meta": {
+      "@id": "judo:meta",
+      "@type": "@id"
+    },
+    "ErrorV2": "judo:ErrorV2",
+    "code": {
+      "@id": "judo:code",
+      "@type": "xsd:string"
+    },
+    "title": {
+      "@id": "judo:title",
+      "@type": "xsd:string"
+    },
+    "detail": {
+      "@id": "judo:detail",
+      "@type": "xsd:string"
+    },
+    "ErrorV2_meta": "judo:ErrorV2_meta",
+    "urn": {
+      "@id": "judo:urn",
+      "@type": "xsd:string"
+    },
+    "LinksPaginated": "judo:LinksPaginated",
+    "self": {
+      "@id": "judo:self",
+      "@type": "xsd:string"
+    },
+    "first": {
+      "@id": "judo:first",
+      "@type": "xsd:string"
+    },
+    "prev": {
+      "@id": "judo:prev",
+      "@type": "xsd:string"
+    },
+    "next": {
+      "@id": "judo:next",
+      "@type": "xsd:string"
+    },
+    "last": {
+      "@id": "judo:last",
+      "@type": "xsd:string"
+    },
+    "ResponseBankingAccountsBalanceList_data": "judo:ResponseBankingAccountsBalanceList_data",
+    "balances": {
+      "@id": "judo:balances",
+      "@container": "@list"
+    },
+    "Links": "judo:Links",
+    "RequestAccountIdListV1_data": "judo:RequestAccountIdListV1_data",
+    "accountIds": {
+      "@id": "judo:accountIds",
+      "@container": "@list"
+    },
+    "ResponseBankingAccountsBalanceById": "judo:ResponseBankingAccountsBalanceById",
+    "links": {
+      "@id": "judo:links",
+      "@type": "@id"
+    },
+    "BankingBalancePurse": "judo:BankingBalancePurse",
+    "amount": {
+      "@id": "judo:amount",
+      "@type": "xsd:string"
+    },
+    "currency": {
+      "@id": "judo:currency",
+      "@type": "xsd:string"
+    },
+    "ResponseErrorListV2": "judo:ResponseErrorListV2",
+    "errors": {
+      "@id": "judo:errors",
+      "@container": "@list"
+    },
+    "BankingBalance": "judo:BankingBalance",
+    "accountId": {
+      "@id": "judo:accountId"
+    },
+    "currentBalance": {
+      "@id": "judo:currentBalance",
+      "@type": "xsd:string"
+    },
+    "availableBalance": {
+      "@id": "judo:availableBalance",
+      "@type": "xsd:string"
+    },
+    "creditLimit": {
+      "@id": "judo:creditLimit",
+      "@type": "xsd:string"
+    },
+    "amortisedLimit": {
+      "@id": "judo:amortisedLimit",
+      "@type": "xsd:string"
+    },
+    "purses": {
+      "@id": "judo:purses",
+      "@container": "@list"
+    },
+    "ResponseBankingAccountsBalanceList": "judo:ResponseBankingAccountsBalanceList",
+    "ResponseBankingDirectDebitAuthorisationList_data": "judo:ResponseBankingDirectDebitAuthorisationList_data",
+    "directDebitAuthorisations": {
+      "@id": "judo:directDebitAuthorisations",
+      "@container": "@list"
+    },
+    "BankingDirectDebit": "judo:BankingDirectDebit",
+    "authorisedEntity": {
+      "@id": "judo:authorisedEntity",
+      "@type": "@id"
+    },
+    "lastDebitDateTime": {
+      "@id": "judo:lastDebitDateTime",
+      "@type": "xsd:string"
+    },
+    "lastDebitAmount": {
+      "@id": "judo:lastDebitAmount",
+      "@type": "xsd:string"
+    },
+    "ResponseBankingDirectDebitAuthorisationList": "judo:ResponseBankingDirectDebitAuthorisationList",
+    "BankingAuthorisedEntity": "judo:BankingAuthorisedEntity",
+    "description": {
+      "@id": "judo:description",
+      "@type": "xsd:string"
+    },
+    "financialInstitution": {
+      "@id": "judo:financialInstitution",
+      "@type": "xsd:string"
+    },
+    "abn": {
+      "@id": "judo:abn",
+      "@type": "xsd:string"
+    },
+    "acn": {
+      "@id": "judo:acn",
+      "@type": "xsd:string"
+    },
+    "arbn": {
+      "@id": "judo:arbn",
+      "@type": "xsd:string"
+    },
+    "ResponseBankingInstalmentPlanList": "judo:ResponseBankingInstalmentPlanList",
+    "BankingScheduledPaymentV2": "judo:BankingScheduledPaymentV2",
+    "scheduledPaymentId": {
+      "@id": "judo:scheduledPaymentId"
+    },
+    "nickname": {
+      "@id": "judo:nickname",
+      "@type": "xsd:string"
+    },
+    "payerReference": {
+      "@id": "judo:payerReference",
+      "@type": "xsd:string"
+    },
+    "payeeReference": {
+      "@id": "judo:payeeReference",
+      "@type": "xsd:string"
+    },
+    "status": {
+      "@id": "judo:status",
+      "@type": "xsd:string"
+    },
+    "from": {
+      "@id": "judo:from",
+      "@type": "@id"
+    },
+    "paymentSet": {
+      "@id": "judo:paymentSet",
+      "@container": "@list"
+    },
+    "recurrence": {
+      "@id": "judo:recurrence",
+      "@type": "@id"
+    },
+    "BankingInternationalPayee_bankDetails_bankAddress": "judo:BankingInternationalPayee_bankDetails_bankAddress",
+    "name": {
+      "@id": "judo:name",
+      "@type": "xsd:string"
+    },
+    "address": {
+      "@id": "judo:address",
+      "@type": "xsd:string"
+    },
+    "BankingScheduledPaymentRecurrenceLastWeekday": "judo:BankingScheduledPaymentRecurrenceLastWeekday",
+    "finalPaymentDate": {
+      "@id": "judo:finalPaymentDate",
+      "@type": "xsd:string"
+    },
+    "paymentsRemaining": {
+      "@id": "judo:paymentsRemaining",
+      "@type": "xsd:integer"
+    },
+    "interval": {
+      "@id": "judo:interval",
+      "@type": "xsd:string"
+    },
+    "lastWeekDay": {
+      "@id": "judo:lastWeekDay",
+      "@type": "xsd:string"
+    },
+    "nonBusinessDayTreatment": {
+      "@id": "judo:nonBusinessDayTreatment",
+      "@type": "xsd:string"
+    },
+    "BankingBillerPayee": "judo:BankingBillerPayee",
+    "billerCode": {
+      "@id": "judo:billerCode",
+      "@type": "xsd:string"
+    },
+    "crn": {
+      "@id": "judo:crn",
+      "@type": "xsd:string"
+    },
+    "billerName": {
+      "@id": "judo:billerName",
+      "@type": "xsd:string"
+    },
+    "BankingInstalmentPlan": "judo:BankingInstalmentPlan",
+    "planId": {
+      "@id": "judo:planId"
+    },
+    "planReference": {
+      "@id": "judo:planReference",
+      "@type": "xsd:string"
+    },
+    "merchantName": {
+      "@id": "judo:merchantName",
+      "@type": "xsd:string"
+    },
+    "merchantCategoryCode": {
+      "@id": "judo:merchantCategoryCode",
+      "@type": "xsd:string"
+    },
+    "planNickname": {
+      "@id": "judo:planNickname",
+      "@type": "xsd:string"
+    },
+    "creationDate": {
+      "@id": "judo:creationDate",
+      "@type": "xsd:string"
+    },
+    "planCurrency": {
+      "@id": "judo:planCurrency",
+      "@type": "xsd:string"
+    },
+    "planCharge": {
+      "@id": "judo:planCharge",
+      "@type": "xsd:string"
+    },
+    "planRate": {
+      "@id": "judo:planRate",
+      "@type": "xsd:string"
+    },
+    "duration": {
+      "@id": "judo:duration",
+      "@type": "xsd:string"
+    },
+    "instalmentInterval": {
+      "@id": "judo:instalmentInterval",
+      "@type": "xsd:string"
+    },
+    "schedule": {
+      "@id": "judo:schedule",
+      "@container": "@list"
+    },
+    "BankingDomesticPayeePayId": "judo:BankingDomesticPayeePayId",
+    "identifier": {
+      "@id": "judo:identifier",
+      "@type": "xsd:string"
+    },
+    "type": {
+      "@id": "judo:type",
+      "@type": "xsd:string"
+    },
+    "BankingScheduledPaymentInterval": "judo:BankingScheduledPaymentInterval",
+    "dayInInterval": {
+      "@id": "judo:dayInInterval",
+      "@type": "xsd:string"
+    },
+    "BankingScheduledPaymentSetV2": "judo:BankingScheduledPaymentSetV2",
+    "to": {
+      "@id": "judo:to",
+      "@type": "@id"
+    },
+    "isAmountCalculated": {
+      "@id": "judo:isAmountCalculated",
+      "@type": "xsd:boolean"
+    },
+    "BankingInternationalPayee_beneficiaryDetails": "judo:BankingInternationalPayee_beneficiaryDetails",
+    "country": {
+      "@id": "judo:country",
+      "@type": "xsd:string"
+    },
+    "message": {
+      "@id": "judo:message",
+      "@type": "xsd:string"
+    },
+    "BankingScheduledPaymentRecurrence": "judo:BankingScheduledPaymentRecurrence",
+    "nextPaymentDate": {
+      "@id": "judo:nextPaymentDate",
+      "@type": "xsd:string"
+    },
+    "recurrenceUType": {
+      "@id": "judo:recurrenceUType",
+      "@type": "xsd:string"
+    },
+    "onceOff": {
+      "@id": "judo:onceOff",
+      "@type": "@id"
+    },
+    "intervalSchedule": {
+      "@id": "judo:intervalSchedule",
+      "@type": "@id"
+    },
+    "eventBased": {
+      "@id": "judo:eventBased",
+      "@type": "@id"
+    },
+    "BankingScheduledPaymentToV2": "judo:BankingScheduledPaymentToV2",
+    "toUType": {
+      "@id": "judo:toUType",
+      "@type": "xsd:string"
+    },
+    "payeeId": {
+      "@id": "judo:payeeId"
+    },
+    "digitalWallet": {
+      "@id": "judo:digitalWallet",
+      "@type": "@id"
+    },
+    "domestic": {
+      "@id": "judo:domestic",
+      "@type": "@id"
+    },
+    "biller": {
+      "@id": "judo:biller",
+      "@type": "@id"
+    },
+    "international": {
+      "@id": "judo:international",
+      "@type": "@id"
+    },
+    "ResponseBankingScheduledPaymentsListV2": "judo:ResponseBankingScheduledPaymentsListV2",
+    "ResponseBankingInstalmentPlanList_data": "judo:ResponseBankingInstalmentPlanList_data",
+    "plans": {
+      "@id": "judo:plans",
+      "@container": "@list"
+    },
+    "BankingDigitalWalletPayee": "judo:BankingDigitalWalletPayee",
+    "provider": {
+      "@id": "judo:provider",
+      "@type": "xsd:string"
+    },
+    "BankingInstalmentPlanSchedule": "judo:BankingInstalmentPlanSchedule",
+    "amountDue": {
+      "@id": "judo:amountDue",
+      "@type": "xsd:string"
+    },
+    "dueDate": {
+      "@id": "judo:dueDate",
+      "@type": "xsd:string"
+    },
+    "isPaid": {
+      "@id": "judo:isPaid",
+      "@type": "xsd:boolean"
+    },
+    "BankingScheduledPaymentFrom": "judo:BankingScheduledPaymentFrom",
+    "BankingScheduledPaymentRecurrenceIntervalSchedule": "judo:BankingScheduledPaymentRecurrenceIntervalSchedule",
+    "intervals": {
+      "@id": "judo:intervals",
+      "@container": "@list"
+    },
+    "BankingScheduledPaymentRecurrenceOnceOff": "judo:BankingScheduledPaymentRecurrenceOnceOff",
+    "paymentDate": {
+      "@id": "judo:paymentDate",
+      "@type": "xsd:string"
+    },
+    "BankingDomesticPayeeCard": "judo:BankingDomesticPayeeCard",
+    "cardNumber": {
+      "@id": "judo:cardNumber",
+      "@type": "xsd:string"
+    },
+    "BankingDomesticPayee": "judo:BankingDomesticPayee",
+    "payeeAccountUType": {
+      "@id": "judo:payeeAccountUType",
+      "@type": "xsd:string"
+    },
+    "account": {
+      "@id": "judo:account",
+      "@type": "@id"
+    },
+    "card": {
+      "@id": "judo:card",
+      "@type": "@id"
+    },
+    "payId": {
+      "@id": "judo:payId",
+      "@type": "@id"
+    },
+    "BankingDomesticPayeeAccount": "judo:BankingDomesticPayeeAccount",
+    "accountName": {
+      "@id": "judo:accountName",
+      "@type": "xsd:string"
+    },
+    "bsb": {
+      "@id": "judo:bsb",
+      "@type": "xsd:string"
+    },
+    "accountNumber": {
+      "@id": "judo:accountNumber",
+      "@type": "xsd:string"
+    },
+    "BankingScheduledPaymentRecurrenceEventBased": "judo:BankingScheduledPaymentRecurrenceEventBased",
+    "BankingInternationalPayee": "judo:BankingInternationalPayee",
+    "beneficiaryDetails": {
+      "@id": "judo:beneficiaryDetails",
+      "@type": "@id"
+    },
+    "bankDetails": {
+      "@id": "judo:bankDetails",
+      "@type": "@id"
+    },
+    "BankingInternationalPayee_bankDetails": "judo:BankingInternationalPayee_bankDetails",
+    "bankAddress": {
+      "@id": "judo:bankAddress",
+      "@type": "@id"
+    },
+    "beneficiaryBankBIC": {
+      "@id": "judo:beneficiaryBankBIC",
+      "@type": "xsd:string"
+    },
+    "fedWireNumber": {
+      "@id": "judo:fedWireNumber",
+      "@type": "xsd:string"
+    },
+    "sortCode": {
+      "@id": "judo:sortCode",
+      "@type": "xsd:string"
+    },
+    "chipNumber": {
+      "@id": "judo:chipNumber",
+      "@type": "xsd:string"
+    },
+    "routingNumber": {
+      "@id": "judo:routingNumber",
+      "@type": "xsd:string"
+    },
+    "legalEntityIdentifier": {
+      "@id": "judo:legalEntityIdentifier",
+      "@type": "xsd:string"
+    },
+    "ResponseBankingScheduledPaymentsListV2_data": "judo:ResponseBankingScheduledPaymentsListV2_data",
+    "scheduledPayments": {
+      "@id": "judo:scheduledPayments",
+      "@container": "@list"
+    },
+    "ResponseBankingTransactionByIdV3": "judo:ResponseBankingTransactionByIdV3",
+    "BankingTransactionDetailV3_allOf_extendedData": "judo:BankingTransactionDetailV3_allOf_extendedData",
+    "payer": {
+      "@id": "judo:payer",
+      "@type": "xsd:string"
+    },
+    "payee": {
+      "@id": "judo:payee",
+      "@type": "xsd:string"
+    },
+    "extensionUType": {
+      "@id": "judo:extensionUType",
+      "@type": "xsd:string"
+    },
+    "nppPayload": {
+      "@id": "judo:nppPayload",
+      "@type": "@id"
+    },
+    "BankingTransactionDetailV3_allOf": "judo:BankingTransactionDetailV3_allOf",
+    "extendedData": {
+      "@id": "judo:extendedData",
+      "@type": "@id"
+    },
+    "BankingTransactionDetailV3_allOf_extendedData_nppPayload": "judo:BankingTransactionDetailV3_allOf_extendedData_nppPayload",
+    "extendedDescription": {
+      "@id": "judo:extendedDescription",
+      "@type": "xsd:string"
+    },
+    "endToEndId": {
+      "@id": "judo:endToEndId",
+      "@type": "xsd:string"
+    },
+    "purposeCode": {
+      "@id": "judo:purposeCode",
+      "@type": "xsd:string"
+    },
+    "service": {
+      "@id": "judo:service",
+      "@type": "@id"
+    },
+    "serviceVersion": {
+      "@id": "judo:serviceVersion",
+      "@type": "xsd:string"
+    },
+    "BankingTransactionV2": "judo:BankingTransactionV2",
+    "transactionId": {
+      "@id": "judo:transactionId"
+    },
+    "isDetailAvailable": {
+      "@id": "judo:isDetailAvailable",
+      "@type": "xsd:boolean"
+    },
+    "postingDateTime": {
+      "@id": "judo:postingDateTime",
+      "@type": "xsd:string"
+    },
+    "valueDateTime": {
+      "@id": "judo:valueDateTime",
+      "@type": "xsd:string"
+    },
+    "executionDateTime": {
+      "@id": "judo:executionDateTime",
+      "@type": "xsd:string"
+    },
+    "reference": {
+      "@id": "judo:reference",
+      "@type": "xsd:string"
+    },
+    "instalmentPlanId": {
+      "@id": "judo:instalmentPlanId"
+    },
+    "apcaNumber": {
+      "@id": "judo:apcaNumber",
+      "@type": "xsd:string"
+    },
+    "MetaPaginatedTransaction_allOf": "judo:MetaPaginatedTransaction_allOf",
+    "isQueryParamUnsupported": {
+      "@id": "judo:isQueryParamUnsupported",
+      "@type": "xsd:boolean"
+    },
+    "NppPaymentService": "judo:NppPaymentService",
+    "ResponseBankingTransactionListV2_data": "judo:ResponseBankingTransactionListV2_data",
+    "transactions": {
+      "@id": "judo:transactions",
+      "@container": "@list"
+    },
+    "ResponseBankingTransactionListV2": "judo:ResponseBankingTransactionListV2",
+    "ResponseBankingAccountByIdV5": "judo:ResponseBankingAccountByIdV5",
+    "CommonPhysicalAddress": "judo:CommonPhysicalAddress",
+    "addressUType": {
+      "@id": "judo:addressUType",
+      "@type": "xsd:string"
+    },
+    "simple": {
+      "@id": "judo:simple",
+      "@type": "@id"
+    },
+    "paf": {
+      "@id": "judo:paf",
+      "@type": "@id"
+    },
+    "ResponseBankingAccountListV3": "judo:ResponseBankingAccountListV3",
+    "BankingFeeDiscountRate": "judo:BankingFeeDiscountRate",
+    "rateType": {
+      "@id": "judo:rateType",
+      "@type": "xsd:string"
+    },
+    "rate": {
+      "@id": "judo:rate",
+      "@type": "xsd:string"
+    },
+    "amountRange": {
+      "@id": "judo:amountRange",
+      "@type": "@id"
+    },
+    "BankingFeeRange": "judo:BankingFeeRange",
+    "feeMinimum": {
+      "@id": "judo:feeMinimum",
+      "@type": "xsd:string"
+    },
+    "feeMaximum": {
+      "@id": "judo:feeMaximum",
+      "@type": "xsd:string"
+    },
+    "CommonPAFAddress": "judo:CommonPAFAddress",
+    "dpid": {
+      "@id": "judo:dpid",
+      "@type": "xsd:string"
+    },
+    "thoroughfareNumber1": {
+      "@id": "judo:thoroughfareNumber1",
+      "@type": "xsd:integer"
+    },
+    "thoroughfareNumber1Suffix": {
+      "@id": "judo:thoroughfareNumber1Suffix",
+      "@type": "xsd:string"
+    },
+    "thoroughfareNumber2": {
+      "@id": "judo:thoroughfareNumber2",
+      "@type": "xsd:integer"
+    },
+    "thoroughfareNumber2Suffix": {
+      "@id": "judo:thoroughfareNumber2Suffix",
+      "@type": "xsd:string"
+    },
+    "flatUnitType": {
+      "@id": "judo:flatUnitType",
+      "@type": "xsd:string"
+    },
+    "flatUnitNumber": {
+      "@id": "judo:flatUnitNumber",
+      "@type": "xsd:string"
+    },
+    "floorLevelType": {
+      "@id": "judo:floorLevelType",
+      "@type": "xsd:string"
+    },
+    "floorLevelNumber": {
+      "@id": "judo:floorLevelNumber",
+      "@type": "xsd:string"
+    },
+    "lotNumber": {
+      "@id": "judo:lotNumber",
+      "@type": "xsd:string"
+    },
+    "buildingName1": {
+      "@id": "judo:buildingName1",
+      "@type": "xsd:string"
+    },
+    "buildingName2": {
+      "@id": "judo:buildingName2",
+      "@type": "xsd:string"
+    },
+    "streetName": {
+      "@id": "judo:streetName",
+      "@type": "xsd:string"
+    },
+    "streetType": {
+      "@id": "judo:streetType",
+      "@type": "xsd:string"
+    },
+    "streetSuffix": {
+      "@id": "judo:streetSuffix",
+      "@type": "xsd:string"
+    },
+    "postalDeliveryType": {
+      "@id": "judo:postalDeliveryType",
+      "@type": "xsd:string"
+    },
+    "postalDeliveryNumber": {
+      "@id": "judo:postalDeliveryNumber",
+      "@type": "xsd:integer"
+    },
+    "postalDeliveryNumberPrefix": {
+      "@id": "judo:postalDeliveryNumberPrefix",
+      "@type": "xsd:string"
+    },
+    "postalDeliveryNumberSuffix": {
+      "@id": "judo:postalDeliveryNumberSuffix",
+      "@type": "xsd:string"
+    },
+    "localityName": {
+      "@id": "judo:localityName",
+      "@type": "xsd:string"
+    },
+    "postcode": {
+      "@id": "judo:postcode",
+      "@type": "xsd:string"
+    },
+    "state": {
+      "@id": "judo:state",
+      "@type": "xsd:string"
+    },
+    "ResponseBankingAccountListV3_data": "judo:ResponseBankingAccountListV3_data",
+    "accounts": {
+      "@id": "judo:accounts",
+      "@container": "@list"
+    },
+    "BankingProductLendingRateV3": "judo:BankingProductLendingRateV3",
+    "lendingRateType": {
+      "@id": "judo:lendingRateType",
+      "@type": "xsd:string"
+    },
+    "comparisonRate": {
+      "@id": "judo:comparisonRate",
+      "@type": "xsd:string"
+    },
+    "calculationFrequency": {
+      "@id": "judo:calculationFrequency",
+      "@type": "xsd:string"
+    },
+    "applicationType": {
+      "@id": "judo:applicationType",
+      "@type": "xsd:string"
+    },
+    "applicationFrequency": {
+      "@id": "judo:applicationFrequency",
+      "@type": "xsd:string"
+    },
+    "interestPaymentDue": {
+      "@id": "judo:interestPaymentDue",
+      "@type": "xsd:string"
+    },
+    "repaymentType": {
+      "@id": "judo:repaymentType",
+      "@type": "xsd:string"
+    },
+    "loanPurpose": {
+      "@id": "judo:loanPurpose",
+      "@type": "xsd:string"
+    },
+    "tiers": {
+      "@id": "judo:tiers",
+      "@container": "@list"
+    },
+    "applicabilityConditions": {
+      "@id": "judo:applicabilityConditions",
+      "@container": "@list"
+    },
+    "additionalValue": {
+      "@id": "judo:additionalValue",
+      "@type": "xsd:string"
+    },
+    "additionalInfo": {
+      "@id": "judo:additionalInfo",
+      "@type": "xsd:string"
+    },
+    "additionalInfoUri": {
+      "@id": "judo:additionalInfoUri",
+      "@type": "xsd:string"
+    },
+    "BankingProductFeeV2": "judo:BankingProductFeeV2",
+    "feeType": {
+      "@id": "judo:feeType",
+      "@type": "xsd:string"
+    },
+    "feeMethodUType": {
+      "@id": "judo:feeMethodUType",
+      "@type": "xsd:string"
+    },
+    "fixedAmount": {
+      "@id": "judo:fixedAmount"
+    },
+    "rateBased": {
+      "@id": "judo:rateBased"
+    },
+    "variable": {
+      "@id": "judo:variable"
+    },
+    "feeCap": {
+      "@id": "judo:feeCap",
+      "@type": "xsd:string"
+    },
+    "feeCapPeriod": {
+      "@id": "judo:feeCapPeriod",
+      "@type": "xsd:string"
+    },
+    "discounts": {
+      "@id": "judo:discounts",
+      "@container": "@list"
+    },
+    "BankingCreditCardAccount": "judo:BankingCreditCardAccount",
+    "minPaymentAmount": {
+      "@id": "judo:minPaymentAmount",
+      "@type": "xsd:string"
+    },
+    "paymentDueAmount": {
+      "@id": "judo:paymentDueAmount",
+      "@type": "xsd:string"
+    },
+    "paymentCurrency": {
+      "@id": "judo:paymentCurrency",
+      "@type": "xsd:string"
+    },
+    "paymentDueDate": {
+      "@id": "judo:paymentDueDate",
+      "@type": "xsd:string"
+    },
+    "BankingFeeDiscountAmount": "judo:BankingFeeDiscountAmount",
+    "BankingProductInstalments": "judo:BankingProductInstalments",
+    "maximumConcurrentPlans": {
+      "@id": "judo:maximumConcurrentPlans",
+      "@type": "xsd:integer"
+    },
+    "instalmentsLimit": {
+      "@id": "judo:instalmentsLimit",
+      "@type": "xsd:string"
+    },
+    "minimumPlanValue": {
+      "@id": "judo:minimumPlanValue",
+      "@type": "xsd:string"
+    },
+    "maximumPlanValue": {
+      "@id": "judo:maximumPlanValue",
+      "@type": "xsd:string"
+    },
+    "minimumSplit": {
+      "@id": "judo:minimumSplit",
+      "@type": "xsd:integer"
+    },
+    "maximumSplit": {
+      "@id": "judo:maximumSplit",
+      "@type": "xsd:integer"
+    },
+    "BankingFeeAmount": "judo:BankingFeeAmount",
+    "BankingProductDiscountEligibility": "judo:BankingProductDiscountEligibility",
+    "discountEligibilityType": {
+      "@id": "judo:discountEligibilityType",
+      "@type": "xsd:string"
+    },
+    "BankingProductDiscountV2": "judo:BankingProductDiscountV2",
+    "discountType": {
+      "@id": "judo:discountType",
+      "@type": "xsd:string"
+    },
+    "discountMethodUType": {
+      "@id": "judo:discountMethodUType",
+      "@type": "xsd:string"
+    },
+    "eligibility": {
+      "@id": "judo:eligibility",
+      "@container": "@list"
+    },
+    "CommonSimpleAddress": "judo:CommonSimpleAddress",
+    "mailingName": {
+      "@id": "judo:mailingName",
+      "@type": "xsd:string"
+    },
+    "addressLine1": {
+      "@id": "judo:addressLine1",
+      "@type": "xsd:string"
+    },
+    "addressLine2": {
+      "@id": "judo:addressLine2",
+      "@type": "xsd:string"
+    },
+    "addressLine3": {
+      "@id": "judo:addressLine3",
+      "@type": "xsd:string"
+    },
+    "city": {
+      "@id": "judo:city",
+      "@type": "xsd:string"
+    },
+    "BankingFeeRate": "judo:BankingFeeRate",
+    "accrualFrequency": {
+      "@id": "judo:accrualFrequency",
+      "@type": "xsd:string"
+    },
+    "BankingTermDepositAccount": "judo:BankingTermDepositAccount",
+    "lodgementDate": {
+      "@id": "judo:lodgementDate",
+      "@type": "xsd:string"
+    },
+    "maturityDate": {
+      "@id": "judo:maturityDate",
+      "@type": "xsd:string"
+    },
+    "maturityAmount": {
+      "@id": "judo:maturityAmount",
+      "@type": "xsd:string"
+    },
+    "maturityCurrency": {
+      "@id": "judo:maturityCurrency",
+      "@type": "xsd:string"
+    },
+    "maturityInstructions": {
+      "@id": "judo:maturityInstructions",
+      "@type": "xsd:string"
+    },
+    "BankingProductFeatureV4": "judo:BankingProductFeatureV4",
+    "featureType": {
+      "@id": "judo:featureType",
+      "@type": "xsd:string"
+    },
+    "BankingProductDepositRateV2": "judo:BankingProductDepositRateV2",
+    "depositRateType": {
+      "@id": "judo:depositRateType",
+      "@type": "xsd:string"
+    },
+    "BankingAccountV3": "judo:BankingAccountV3",
+    "displayName": {
+      "@id": "judo:displayName",
+      "@type": "xsd:string"
+    },
+    "openStatus": {
+      "@id": "judo:openStatus",
+      "@type": "xsd:string"
+    },
+    "isOwned": {
+      "@id": "judo:isOwned",
+      "@type": "xsd:boolean"
+    },
+    "accountOwnership": {
+      "@id": "judo:accountOwnership",
+      "@type": "xsd:string"
+    },
+    "maskedNumber": {
+      "@id": "judo:maskedNumber",
+      "@type": "xsd:string"
+    },
+    "productCategory": {
+      "@id": "judo:productCategory",
+      "@type": "@id"
+    },
+    "productName": {
+      "@id": "judo:productName",
+      "@type": "xsd:string"
+    },
+    "isInstalmentDetailAvailable": {
+      "@id": "judo:isInstalmentDetailAvailable",
+      "@type": "xsd:boolean"
+    },
+    "BankingLoanAccountV3": "judo:BankingLoanAccountV3",
+    "originalStartDate": {
+      "@id": "judo:originalStartDate",
+      "@type": "xsd:string"
+    },
+    "originalLoanAmount": {
+      "@id": "judo:originalLoanAmount",
+      "@type": "xsd:string"
+    },
+    "originalLoanCurrency": {
+      "@id": "judo:originalLoanCurrency",
+      "@type": "xsd:string"
+    },
+    "loanEndDate": {
+      "@id": "judo:loanEndDate",
+      "@type": "xsd:string"
+    },
+    "nextInstalmentDate": {
+      "@id": "judo:nextInstalmentDate",
+      "@type": "xsd:string"
+    },
+    "minInstalmentAmount": {
+      "@id": "judo:minInstalmentAmount",
+      "@type": "xsd:string"
+    },
+    "minInstalmentCurrency": {
+      "@id": "judo:minInstalmentCurrency",
+      "@type": "xsd:string"
+    },
+    "maxRedraw": {
+      "@id": "judo:maxRedraw",
+      "@type": "xsd:string"
+    },
+    "maxRedrawCurrency": {
+      "@id": "judo:maxRedrawCurrency",
+      "@type": "xsd:string"
+    },
+    "minRedraw": {
+      "@id": "judo:minRedraw",
+      "@type": "xsd:string"
+    },
+    "minRedrawCurrency": {
+      "@id": "judo:minRedrawCurrency",
+      "@type": "xsd:string"
+    },
+    "offsetAccountEnabled": {
+      "@id": "judo:offsetAccountEnabled",
+      "@type": "xsd:boolean"
+    },
+    "offsetAccountIds": {
+      "@id": "judo:offsetAccountIds",
+      "@container": "@list"
+    },
+    "repaymentFrequency": {
+      "@id": "judo:repaymentFrequency",
+      "@type": "xsd:string"
+    },
+    "BankingFeeDiscountRange": "judo:BankingFeeDiscountRange",
+    "discountMinimum": {
+      "@id": "judo:discountMinimum",
+      "@type": "xsd:string"
+    },
+    "discountMaximum": {
+      "@id": "judo:discountMaximum",
+      "@type": "xsd:string"
+    },
+    "BankingProductRateConditionV2": "judo:BankingProductRateConditionV2",
+    "rateApplicabilityType": {
+      "@id": "judo:rateApplicabilityType",
+      "@type": "xsd:string"
+    },
+    "BankingAccountDetailV5_allOf": "judo:BankingAccountDetailV5_allOf",
+    "bundleName": {
+      "@id": "judo:bundleName",
+      "@type": "xsd:string"
+    },
+    "instalments": {
+      "@id": "judo:instalments",
+      "@type": "@id"
+    },
+    "specificAccountUType": {
+      "@id": "judo:specificAccountUType",
+      "@type": "xsd:string"
+    },
+    "termDeposit": {
+      "@id": "judo:termDeposit",
+      "@container": "@list"
+    },
+    "creditCard": {
+      "@id": "judo:creditCard"
+    },
+    "loan": {
+      "@id": "judo:loan"
+    },
+    "depositRate": {
+      "@id": "judo:depositRate",
+      "@type": "xsd:string"
+    },
+    "lendingRate": {
+      "@id": "judo:lendingRate",
+      "@type": "xsd:string"
+    },
+    "depositRates": {
+      "@id": "judo:depositRates",
+      "@container": "@list"
+    },
+    "lendingRates": {
+      "@id": "judo:lendingRates",
+      "@container": "@list"
+    },
+    "features": {
+      "@id": "judo:features",
+      "@container": "@list"
+    },
+    "fees": {
+      "@id": "judo:fees",
+      "@container": "@list"
+    },
+    "addresses": {
+      "@id": "judo:addresses",
+      "@container": "@list"
+    },
+    "BankingProductRateTierV4": "judo:BankingProductRateTierV4",
+    "unitOfMeasure": {
+      "@id": "judo:unitOfMeasure",
+      "@type": "xsd:string"
+    },
+    "minimumValue": {
+      "@id": "judo:minimumValue",
+      "@type": "xsd:string"
+    },
+    "maximumValue": {
+      "@id": "judo:maximumValue",
+      "@type": "xsd:string"
+    },
+    "rateApplicationMethod": {
+      "@id": "judo:rateApplicationMethod",
+      "@type": "xsd:string"
+    },
+    "ResponseBankingPayeeListV2_data": "judo:ResponseBankingPayeeListV2_data",
+    "payees": {
+      "@id": "judo:payees",
+      "@container": "@list"
+    },
+    "ResponseBankingPayeeByIdV2": "judo:ResponseBankingPayeeByIdV2",
+    "BankingPayeeDetailV2_allOf": "judo:BankingPayeeDetailV2_allOf",
+    "payeeUType": {
+      "@id": "judo:payeeUType",
+      "@type": "xsd:string"
+    },
+    "BankingPayeeV2": "judo:BankingPayeeV2",
+    "ResponseBankingPayeeListV2": "judo:ResponseBankingPayeeListV2",
+    "BankingProductAdditionalInformationV2": "judo:BankingProductAdditionalInformationV2",
+    "overviewUri": {
+      "@id": "judo:overviewUri",
+      "@type": "xsd:string"
+    },
+    "termsUri": {
+      "@id": "judo:termsUri",
+      "@type": "xsd:string"
+    },
+    "eligibilityUri": {
+      "@id": "judo:eligibilityUri",
+      "@type": "xsd:string"
+    },
+    "feesAndPricingUri": {
+      "@id": "judo:feesAndPricingUri",
+      "@type": "xsd:string"
+    },
+    "bundleUri": {
+      "@id": "judo:bundleUri",
+      "@type": "xsd:string"
+    },
+    "additionalOverviewUris": {
+      "@id": "judo:additionalOverviewUris",
+      "@container": "@list"
+    },
+    "additionalTermsUris": {
+      "@id": "judo:additionalTermsUris",
+      "@container": "@list"
+    },
+    "additionalEligibilityUris": {
+      "@id": "judo:additionalEligibilityUris",
+      "@container": "@list"
+    },
+    "additionalFeesAndPricingUris": {
+      "@id": "judo:additionalFeesAndPricingUris",
+      "@container": "@list"
+    },
+    "additionalBundleUris": {
+      "@id": "judo:additionalBundleUris",
+      "@container": "@list"
+    },
+    "BankingProductV6": "judo:BankingProductV6",
+    "productId": {
+      "@id": "judo:productId",
+      "@type": "@id"
+    },
+    "effectiveFrom": {
+      "@id": "judo:effectiveFrom",
+      "@type": "xsd:string"
+    },
+    "effectiveTo": {
+      "@id": "judo:effectiveTo",
+      "@type": "xsd:string"
+    },
+    "lastUpdated": {
+      "@id": "judo:lastUpdated",
+      "@type": "xsd:string"
+    },
+    "brand": {
+      "@id": "judo:brand",
+      "@type": "xsd:string"
+    },
+    "brandName": {
+      "@id": "judo:brandName",
+      "@type": "xsd:string"
+    },
+    "brandGroup": {
+      "@id": "judo:brandGroup",
+      "@type": "xsd:string"
+    },
+    "applicationUri": {
+      "@id": "judo:applicationUri",
+      "@type": "xsd:string"
+    },
+    "isTailored": {
+      "@id": "judo:isTailored",
+      "@type": "xsd:boolean"
+    },
+    "additionalInformation": {
+      "@id": "judo:additionalInformation",
+      "@type": "@id"
+    },
+    "cardArt": {
+      "@id": "judo:cardArt",
+      "@container": "@list"
+    },
+    "ResponseBankingProductListV4_data": "judo:ResponseBankingProductListV4_data",
+    "products": {
+      "@id": "judo:products",
+      "@container": "@list"
+    },
+    "BankingProductBundle": "judo:BankingProductBundle",
+    "productIds": {
+      "@id": "judo:productIds",
+      "@container": "@list"
+    },
+    "BankingProductEligibilityV2": "judo:BankingProductEligibilityV2",
+    "eligibilityType": {
+      "@id": "judo:eligibilityType",
+      "@type": "xsd:string"
+    },
+    "ResponseBankingProductListV4": "judo:ResponseBankingProductListV4",
+    "BankingProductCardArt": "judo:BankingProductCardArt",
+    "cardScheme": {
+      "@id": "judo:cardScheme",
+      "@type": "xsd:string"
+    },
+    "cardType": {
+      "@id": "judo:cardType",
+      "@type": "xsd:string"
+    },
+    "imageUri": {
+      "@id": "judo:imageUri",
+      "@type": "xsd:string"
+    },
+    "ResponseBankingProductByIdV7": "judo:ResponseBankingProductByIdV7",
+    "BankingProductConstraintV3": "judo:BankingProductConstraintV3",
+    "constraintType": {
+      "@id": "judo:constraintType",
+      "@type": "xsd:string"
+    },
+    "BankingProductAdditionalInformationV2_additionalInformationUris": "judo:BankingProductAdditionalInformationV2_additionalInformationUris",
+    "BankingProductDetailV7_allOf": "judo:BankingProductDetailV7_allOf",
+    "bundles": {
+      "@id": "judo:bundles",
+      "@container": "@list"
+    },
+    "constraints": {
+      "@id": "judo:constraints",
+      "@container": "@list"
+    }
+  },
+  "@type": "schema:Dataset",
+  "schema:name": "Judo Bank API JSON-LD context",
+  "schema:description": "A JSON-LD @context for the objects Judo Bank's own API contract declares: one class per component schema, one property per declared field, typed from the contract. Derived by script (derive-json-ld.py, 2026-10-21) from openapi/judo-bank-banking-account-balances-api-openapi.yml, openapi/judo-bank-banking-account-direct-debits-api-openapi.yml, openapi/judo-bank-banking-account-scheduled-payments-api-openapi.yml.",
+  "dcterms:created": "2026-10-21",
+  "dcterms:source": [
+    "openapi/judo-bank-banking-account-balances-api-openapi.yml",
+    "openapi/judo-bank-banking-account-direct-debits-api-openapi.yml",
+    "openapi/judo-bank-banking-account-scheduled-payments-api-openapi.yml",
+    "openapi/judo-bank-banking-account-transactions-api-openapi.yml",
+    "openapi/judo-bank-banking-accounts-api-openapi.yml"
+  ]
+}

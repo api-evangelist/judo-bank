@@ -1,0 +1,82 @@
+generated: '2026-10-21'
+method: derived
+source: the pre-flight dossier, apis.yml pointers, spec servers, well-known, vendors -- nothing fetched here
+generator: derive-hosts.py
+summary:
+  hosts: 6
+  own: 3
+  other_domain: 0
+  platform: 3
+  roles:
+  - api
+  - other
+  - source
+  - website
+hosts:
+- host: api.judo.bank
+  found_by:
+  - contract-discovery
+  types: []
+  serves: []
+  registrable_domain: judo.bank
+  role: api
+  relation: own
+- host: consumerdatastandardsaustralia.github.io
+  found_by:
+  - pointer
+  types:
+  - Deprecation
+  serves: []
+  registrable_domain: github.io
+  role: other
+  relation: platform
+- host: github.com
+  found_by:
+  - pointer
+  types:
+  - GitHubOrganization
+  serves: []
+  registrable_domain: github.com
+  role: source
+  relation: platform
+- host: public.open.judo.bank
+  found_by:
+  - apis[]
+  - probed
+  - contract-discovery
+  - well-known
+  types: []
+  serves:
+  - api
+  registrable_domain: judo.bank
+  role: other
+  relation: own
+- host: www.judo.bank
+  found_by:
+  - pointer
+  - apis[]
+  - probed
+  - contract-discovery
+  - well-known
+  - vendor-detect
+  types:
+  - BlogRSS
+  - Website
+  - Documentation
+  - PrivacyPolicy
+  serves:
+  - docs
+  - cdn
+  vendor: cloudflare
+  registrable_domain: judo.bank
+  role: website
+  relation: own
+- host: www.linkedin.com
+  found_by:
+  - pointer
+  types:
+  - LinkedIn
+  serves: []
+  registrable_domain: linkedin.com
+  role: other
+  relation: platform

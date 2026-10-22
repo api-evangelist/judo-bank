@@ -1,0 +1,6 @@
+generated: '2026-10-21'
+method: probed
+generator: harvest-llms.py
+source: https://www.judo.bank/llms.txt
+bytes: 4318
+note: saved verbatim; the provider's own document
